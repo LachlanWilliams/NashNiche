@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1E3042C02BC65608009989A6 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3042BF2BC65608009989A6 /* profileViewController.swift */; };
 		1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3042C12BC65BB9009989A6 /* TabBarController.swift */; };
+		1E6235AB2BC8E4F100376450 /* ParentPreviewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */; };
+		1E6235AD2BC8E88600376450 /* NannyPreviewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */; };
 		1E730DD52BC60E700004EADE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD42BC60E700004EADE /* AppDelegate.swift */; };
 		1E730DD72BC60E700004EADE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD62BC60E700004EADE /* SceneDelegate.swift */; };
 		1E730DD92BC60E700004EADE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD82BC60E700004EADE /* ViewController.swift */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		1E3042BF2BC65608009989A6 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		1E3042C12BC65BB9009989A6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentPreviewJobViewController.swift; sourceTree = "<group>"; };
+		1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NannyPreviewJobViewController.swift; sourceTree = "<group>"; };
 		1E730DD12BC60E700004EADE /* IOSAppAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSAppAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E730DD42BC60E700004EADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E730DD62BC60E700004EADE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,7 +117,9 @@
 			children = (
 				1E730DD42BC60E700004EADE /* AppDelegate.swift */,
 				1E3042C12BC65BB9009989A6 /* TabBarController.swift */,
+				1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */,
 				1E3042BF2BC65608009989A6 /* profileViewController.swift */,
+				1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */,
 				1E730DD62BC60E700004EADE /* SceneDelegate.swift */,
 				1E730DD82BC60E700004EADE /* ViewController.swift */,
 				1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */,
@@ -283,6 +289,8 @@
 				1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */,
 				1E730DD92BC60E700004EADE /* ViewController.swift in Sources */,
 				1E730DD52BC60E700004EADE /* AppDelegate.swift in Sources */,
+				1E6235AD2BC8E88600376450 /* NannyPreviewJobViewController.swift in Sources */,
+				1E6235AB2BC8E4F100376450 /* ParentPreviewJobViewController.swift in Sources */,
 				1E3042C02BC65608009989A6 /* profileViewController.swift in Sources */,
 				1E730DD72BC60E700004EADE /* SceneDelegate.swift in Sources */,
 			);
