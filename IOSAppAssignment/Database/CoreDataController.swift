@@ -20,6 +20,10 @@ class CoreDataController: NSObject, DatabaseProtocol {
             }
         }
         super.init()
+        
+        if fetchAllJobs().count == 0 {
+            createTestJobs()
+        }
     }
     
     func cleanup() {
