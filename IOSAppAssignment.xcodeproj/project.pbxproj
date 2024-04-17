@@ -17,6 +17,8 @@
 		1E6235BD2BCF72B600376450 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235B92BCF72B600376450 /* User+CoreDataClass.swift */; };
 		1E6235BE2BCF72B600376450 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235BA2BCF72B600376450 /* User+CoreDataProperties.swift */; };
 		1E6235C12BCF738700376450 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235C02BCF738700376450 /* MulticastDelegate.swift */; };
+		1E6235C32BCF745100376450 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235C22BCF745100376450 /* DatabaseProtocol.swift */; };
+		1E6235C52BCF770700376450 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235C42BCF770700376450 /* CoreDataController.swift */; };
 		1E730DD52BC60E700004EADE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD42BC60E700004EADE /* AppDelegate.swift */; };
 		1E730DD72BC60E700004EADE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD62BC60E700004EADE /* SceneDelegate.swift */; };
 		1E730DD92BC60E700004EADE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD82BC60E700004EADE /* ViewController.swift */; };
@@ -60,6 +62,8 @@
 		1E6235B92BCF72B600376450 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1E6235BA2BCF72B600376450 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1E6235C02BCF738700376450 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		1E6235C22BCF745100376450 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		1E6235C42BCF770700376450 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		1E730DD12BC60E700004EADE /* IOSAppAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSAppAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E730DD42BC60E700004EADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E730DD62BC60E700004EADE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				1E6235C02BCF738700376450 /* MulticastDelegate.swift */,
+				1E6235C22BCF745100376450 /* DatabaseProtocol.swift */,
+				1E6235C42BCF770700376450 /* CoreDataController.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -324,6 +330,7 @@
 				1E6235BE2BCF72B600376450 /* User+CoreDataProperties.swift in Sources */,
 				1E730E052BC6121B0004EADE /* preSignUpViewController.swift in Sources */,
 				1E6235B62BCF702700376450 /* NashNicheDataModel.xcdatamodeld in Sources */,
+				1E6235C32BCF745100376450 /* DatabaseProtocol.swift in Sources */,
 				1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */,
 				1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */,
 				1E730DD92BC60E700004EADE /* ViewController.swift in Sources */,
@@ -331,6 +338,7 @@
 				1E6235AD2BC8E88600376450 /* NannyPreviewJobViewController.swift in Sources */,
 				1E6235AB2BC8E4F100376450 /* ParentPreviewJobViewController.swift in Sources */,
 				1E3042C02BC65608009989A6 /* profileViewController.swift in Sources */,
+				1E6235C52BCF770700376450 /* CoreDataController.swift in Sources */,
 				1E6235C12BCF738700376450 /* MulticastDelegate.swift in Sources */,
 				1E730DD72BC60E700004EADE /* SceneDelegate.swift in Sources */,
 			);
