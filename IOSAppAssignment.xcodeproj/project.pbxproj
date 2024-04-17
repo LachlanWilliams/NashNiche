@@ -11,6 +11,7 @@
 		1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3042C12BC65BB9009989A6 /* TabBarController.swift */; };
 		1E6235AB2BC8E4F100376450 /* ParentPreviewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */; };
 		1E6235AD2BC8E88600376450 /* NannyPreviewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */; };
+		1E6235B62BCF702700376450 /* NashNicheDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235B42BCF702700376450 /* NashNicheDataModel.xcdatamodeld */; };
 		1E730DD52BC60E700004EADE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD42BC60E700004EADE /* AppDelegate.swift */; };
 		1E730DD72BC60E700004EADE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD62BC60E700004EADE /* SceneDelegate.swift */; };
 		1E730DD92BC60E700004EADE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD82BC60E700004EADE /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 		1E3042C12BC65BB9009989A6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentPreviewJobViewController.swift; sourceTree = "<group>"; };
 		1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NannyPreviewJobViewController.swift; sourceTree = "<group>"; };
+		1E6235B52BCF702700376450 /* NashNicheDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NashNicheDataModel.xcdatamodel; sourceTree = "<group>"; };
 		1E730DD12BC60E700004EADE /* IOSAppAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSAppAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E730DD42BC60E700004EADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E730DD62BC60E700004EADE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E6235B32BCF700E00376450 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				1E6235B42BCF702700376450 /* NashNicheDataModel.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		1E730DC82BC60E700004EADE = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +127,7 @@
 			children = (
 				1E730DD42BC60E700004EADE /* AppDelegate.swift */,
 				1E3042C12BC65BB9009989A6 /* TabBarController.swift */,
+				1E6235B32BCF700E00376450 /* DataModel */,
 				1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */,
 				1E3042BF2BC65608009989A6 /* profileViewController.swift */,
 				1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */,
@@ -285,6 +296,7 @@
 				1EBD1F962BC62BF200548B5E /* parentHomeViewController.swift in Sources */,
 				1E730E072BC612430004EADE /* signUpViewController.swift in Sources */,
 				1E730E052BC6121B0004EADE /* preSignUpViewController.swift in Sources */,
+				1E6235B62BCF702700376450 /* NashNicheDataModel.xcdatamodeld in Sources */,
 				1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */,
 				1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */,
 				1E730DD92BC60E700004EADE /* ViewController.swift in Sources */,
@@ -639,6 +651,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1E6235B42BCF702700376450 /* NashNicheDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1E6235B52BCF702700376450 /* NashNicheDataModel.xcdatamodel */,
+			);
+			currentVersion = 1E6235B52BCF702700376450 /* NashNicheDataModel.xcdatamodel */;
+			name = NashNicheDataModel.xcdatamodeld;
+			path = /Users/lachlanwilliams/projects/NashNiche/IOSAppAssignment/DataModel/NashNicheDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1E730DC92BC60E700004EADE /* Project object */;
 }
