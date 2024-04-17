@@ -27,7 +27,13 @@ class CoreDataController: NSObject, DatabaseProtocol {
     }
     
     func cleanup() {
-        <#code#>
+        if persistentContainer.viewContext.hasChanges {
+            do {
+                try persistentContainer.viewContext.save()
+            } catch {
+                fatalError("Failed to save changes to Core Data with error: \(error)")
+            }
+        }
     }
     
     func addListener(listener: any DatabaseListener) {
@@ -105,39 +111,39 @@ class CoreDataController: NSObject, DatabaseProtocol {
                        parentEmail: "parent5@email.com")
         // Same parent emails
         let _ = addJob(title: "Full-time nanny",
-                           location: "222 Cedar Ave, Suburbia",
-                           dateTime: Date(),
-                           duration: "8:00 AM to 5:00 PM, Monday to Friday",
-                           description: "Care for 3 children (ages 2, 4, and 6), including educational activities and light housekeeping.",
-                           parentEmail: "parent@email.com")
+                       location: "222 Cedar Ave, Suburbia",
+                       dateTime: Date(),
+                       duration: "8:00 AM to 5:00 PM, Monday to Friday",
+                       description: "Care for 3 children (ages 2, 4, and 6), including educational activities and light housekeeping.",
+                       parentEmail: "parent@email.com")
 
-            let _ = addJob(title: "Overnight nanny",
-                           location: "555 Oakwood Dr, Countryside",
-                           dateTime: Date(),
-                           duration: "10:00 PM to 7:00 AM, Saturdays",
-                           description: "Supervise 1 infant and assist with feeding and diaper changes.",
-                           parentEmail: "parent@email.com")
+        let _ = addJob(title: "Overnight nanny",
+                       location: "555 Oakwood Dr, Countryside",
+                       dateTime: Date(),
+                       duration: "10:00 PM to 7:00 AM, Saturdays",
+                       description: "Supervise 1 infant and assist with feeding and diaper changes.",
+                       parentEmail: "parent@email.com")
 
-            let _ = addJob(title: "Summer nanny",
-                           location: "777 Beach Blvd, Seaside",
-                           dateTime: Date(),
-                           duration: "9:00 AM to 3:00 PM, Monday to Friday, June to August",
-                           description: "Engage with 2 school-aged children in outdoor activities and crafts.",
-                           parentEmail: "parent@email.com")
+        let _ = addJob(title: "Summer nanny",
+                       location: "777 Beach Blvd, Seaside",
+                       dateTime: Date(),
+                       duration: "9:00 AM to 3:00 PM, Monday to Friday, June to August",
+                       description: "Engage with 2 school-aged children in outdoor activities and crafts.",
+                       parentEmail: "parent@email.com")
 
-            let _ = addJob(title: "Afternoon babysitter",
-                           location: "888 Willow Ln, Riverside",
-                           dateTime: Date(),
-                           duration: "3:30 PM to 6:30 PM on weekdays",
-                           description: "Pick up 2 children from school and assist with homework.",
-                           parentEmail: "parent@email.com")
+        let _ = addJob(title: "Afternoon babysitter",
+                       location: "888 Willow Ln, Riverside",
+                       dateTime: Date(),
+                       duration: "3:30 PM to 6:30 PM on weekdays",
+                       description: "Pick up 2 children from school and assist with homework.",
+                       parentEmail: "parent@email.com")
 
-            let _ = addJob(title: "Occasional nanny",
-                           location: "999 Pinecrest Dr, Mountainview",
-                           dateTime: Date(),
-                           duration: "Flexible hours as needed",
-                           description: "Care for 1 toddler during parent's appointments and errands.",
-                           parentEmail: "parent@email.com")
+        let _ = addJob(title: "Occasional nanny",
+                       location: "999 Pinecrest Dr, Mountainview",
+                       dateTime: Date(),
+                       duration: "Flexible hours as needed",
+                       description: "Care for 1 toddler during parent's appointments and errands.",
+                       parentEmail: "parent@email.com")
     }
 
 

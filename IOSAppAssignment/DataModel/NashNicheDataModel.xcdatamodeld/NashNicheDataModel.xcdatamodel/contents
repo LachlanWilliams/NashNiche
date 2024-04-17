@@ -9,6 +9,7 @@
         <attribute name="parent" optional="YES" attributeType="String"/>
         <attribute name="review" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="employer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="jobs" inverseEntity="User"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String"/>
@@ -16,6 +17,6 @@
         <attribute name="lname" optional="YES" attributeType="String"/>
         <attribute name="nanny" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="password" optional="YES" attributeType="String"/>
-        <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job"/>
+        <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="employer" inverseEntity="Job"/>
     </entity>
 </model>
