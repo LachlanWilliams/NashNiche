@@ -34,36 +34,6 @@
             endingLineNumber = "15"
             landmarkName = "init()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5FC7F452-6027-43DA-A07C-61A04E597A26 - c6a8c98ec5e027be"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IOSAppAssignment.CoreDataController.__allocating_init() -&gt; IOSAppAssignment.CoreDataController"
-                  moduleName = "IOSAppAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lachlanwilliams/projects/NashNiche/IOSAppAssignment/Database/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0">
-               </Location>
-               <Location
-                  uuid = "5FC7F452-6027-43DA-A07C-61A04E597A26 - 5454e90146450d7a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IOSAppAssignment.CoreDataController.init() -&gt; IOSAppAssignment.CoreDataController"
-                  moduleName = "IOSAppAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lachlanwilliams/projects/NashNiche/IOSAppAssignment/Database/CoreDataController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
