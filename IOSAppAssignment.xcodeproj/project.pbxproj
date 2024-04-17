@@ -12,6 +12,11 @@
 		1E6235AB2BC8E4F100376450 /* ParentPreviewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */; };
 		1E6235AD2BC8E88600376450 /* NannyPreviewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */; };
 		1E6235B62BCF702700376450 /* NashNicheDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235B42BCF702700376450 /* NashNicheDataModel.xcdatamodeld */; };
+		1E6235BB2BCF72B600376450 /* Job+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235B72BCF72B600376450 /* Job+CoreDataClass.swift */; };
+		1E6235BC2BCF72B600376450 /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235B82BCF72B600376450 /* Job+CoreDataProperties.swift */; };
+		1E6235BD2BCF72B600376450 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235B92BCF72B600376450 /* User+CoreDataClass.swift */; };
+		1E6235BE2BCF72B600376450 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235BA2BCF72B600376450 /* User+CoreDataProperties.swift */; };
+		1E6235C12BCF738700376450 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235C02BCF738700376450 /* MulticastDelegate.swift */; };
 		1E730DD52BC60E700004EADE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD42BC60E700004EADE /* AppDelegate.swift */; };
 		1E730DD72BC60E700004EADE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD62BC60E700004EADE /* SceneDelegate.swift */; };
 		1E730DD92BC60E700004EADE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD82BC60E700004EADE /* ViewController.swift */; };
@@ -50,6 +55,11 @@
 		1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentPreviewJobViewController.swift; sourceTree = "<group>"; };
 		1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NannyPreviewJobViewController.swift; sourceTree = "<group>"; };
 		1E6235B52BCF702700376450 /* NashNicheDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NashNicheDataModel.xcdatamodel; sourceTree = "<group>"; };
+		1E6235B72BCF72B600376450 /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1E6235B82BCF72B600376450 /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1E6235B92BCF72B600376450 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1E6235BA2BCF72B600376450 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1E6235C02BCF738700376450 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		1E730DD12BC60E700004EADE /* IOSAppAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSAppAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E730DD42BC60E700004EADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E730DD62BC60E700004EADE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,9 +107,21 @@
 		1E6235B32BCF700E00376450 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				1E6235B72BCF72B600376450 /* Job+CoreDataClass.swift */,
+				1E6235B82BCF72B600376450 /* Job+CoreDataProperties.swift */,
+				1E6235B92BCF72B600376450 /* User+CoreDataClass.swift */,
+				1E6235BA2BCF72B600376450 /* User+CoreDataProperties.swift */,
 				1E6235B42BCF702700376450 /* NashNicheDataModel.xcdatamodeld */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		1E6235BF2BCF72F600376450 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				1E6235C02BCF738700376450 /* MulticastDelegate.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		1E730DC82BC60E700004EADE = {
@@ -133,6 +155,7 @@
 				1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */,
 				1E730DD62BC60E700004EADE /* SceneDelegate.swift */,
 				1E730DD82BC60E700004EADE /* ViewController.swift */,
+				1E6235BF2BCF72F600376450 /* Database */,
 				1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */,
 				1E730E062BC612430004EADE /* signUpViewController.swift */,
 				1EBD1F932BC62BCF00548B5E /* loginViewController.swift */,
@@ -295,6 +318,10 @@
 			files = (
 				1EBD1F962BC62BF200548B5E /* parentHomeViewController.swift in Sources */,
 				1E730E072BC612430004EADE /* signUpViewController.swift in Sources */,
+				1E6235BB2BCF72B600376450 /* Job+CoreDataClass.swift in Sources */,
+				1E6235BC2BCF72B600376450 /* Job+CoreDataProperties.swift in Sources */,
+				1E6235BD2BCF72B600376450 /* User+CoreDataClass.swift in Sources */,
+				1E6235BE2BCF72B600376450 /* User+CoreDataProperties.swift in Sources */,
 				1E730E052BC6121B0004EADE /* preSignUpViewController.swift in Sources */,
 				1E6235B62BCF702700376450 /* NashNicheDataModel.xcdatamodeld in Sources */,
 				1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */,
@@ -304,6 +331,7 @@
 				1E6235AD2BC8E88600376450 /* NannyPreviewJobViewController.swift in Sources */,
 				1E6235AB2BC8E4F100376450 /* ParentPreviewJobViewController.swift in Sources */,
 				1E3042C02BC65608009989A6 /* profileViewController.swift in Sources */,
+				1E6235C12BCF738700376450 /* MulticastDelegate.swift in Sources */,
 				1E730DD72BC60E700004EADE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
