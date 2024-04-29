@@ -127,6 +127,7 @@
 		1E6235BF2BCF72F600376450 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				1E552CD32BDF7CB20076DA9F /* FirebaseController.swift */,
 				1E6235C02BCF738700376450 /* MulticastDelegate.swift */,
 				1E6235C22BCF745100376450 /* DatabaseProtocol.swift */,
 				1E6235C42BCF770700376450 /* CoreDataController.swift */,
@@ -161,7 +162,6 @@
 				1E552CCD2BDF726B0076DA9F /* GoogleService-Info.plist */,
 				1E3042C12BC65BB9009989A6 /* TabBarController.swift */,
 				1E552CCF2BDF756F0076DA9F /* Job.swift */,
-				1E552CD32BDF7CB20076DA9F /* FirebaseController.swift */,
 				1E552CD12BDF7AF20076DA9F /* User.swift */,
 				1E6235B32BCF700E00376450 /* DataModel */,
 				1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */,

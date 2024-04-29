@@ -27,8 +27,10 @@ protocol DatabaseListener: AnyObject {
 
 protocol DatabaseProtocol: AnyObject {
     func cleanup()
+    
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
-    func addJob(title: String, location: String, dateTime: Date, duration: String, description: String, parentEmail: String )-> Job
-    func deleteSuperhero(job: Job)
+    
+    func addJob(title: String, location: String, dateTime: Date, duration: String, description: String)-> Job
+    func deleteJob(job: Job)
 }
