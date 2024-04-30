@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 
 class FirebaseController: NSObject, DatabaseProtocol {
     
-    let DEFAULT_PERSON_NAME = "Default Person"
+    let DEFAULT_PERSON_EMAIL = "DefaultPerson@email"
     var listeners = MulticastDelegate<DatabaseListener>()
     var jobList: [Job]
     var defaultPerson: Person
@@ -42,9 +42,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
-    func cleanup() {
-        <#code#>
-    }
+    func cleanup() {}
     
     func addListener(listener: any DatabaseListener) {
         listeners.addDelegate(listener)
@@ -151,14 +149,64 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     func setupPersonListener(){
+        personsRef = database.collection("peron")
+        
+        personsRef?.whereField("email", isEqualTo: DEFAULT_PERSON_EMAIL).addSnapshotListener { [weak self] (querySnapshot, error) in
+            guard let querySnapshot = querySnapshot, let personSnapshot = querySnapshot.documents.first else {
+                print("Error fetching teams: \(String(describing: error))")
+                return
+            }
+            
+            self?.parsePersonSnapshot(snapshot: personSnapshot)
+        }
         
     }
     
     func parseJobsSnapshot(snapshot: QuerySnapshot){
+        snapshot.documentChanges.forEach { (change) in
+            var job: Job
+            do {
+                job = try change.document.data(as: Job.self)
+            } catch {
+                fatalError("Unable to decode hero: \(error.localizedDescription)")
+            }
+            
+            if change.type == .added {
+                jobList.insert(job, at: Int(change.newIndex))
+            } else if change.type == .modified {
+                jobList.remove(at: Int(change.oldIndex))
+                jobList.insert(job, at: Int(change.newIndex))
+            } else if change.type == .removed {
+                jobList.remove(at: Int(change.oldIndex))
+            }
+            
+            listeners.invoke { (listener) in
+                if listener.listenerType == .jobs || listener.listenerType == .all {
+                    listener.onAllJobsChange(change: .update, jobs: jobList)
+                }
+            }
+        }
         
     }
     
     func parsePersonSnapshot(snapshot: QueryDocumentSnapshot){
+        defaultPerson = Person()
+        defaultPerson.email = snapshot.data()["email"] as? String
+        defaultPerson.id = snapshot.documentID
+        
+        if let jobReferences = snapshot.data()["job"] as? [DocumentReference] {
+            for reference in jobReferences {
+                if let job = getJobByID(reference.documentID) {
+                    defaultPerson.jobs.append(job)
+                }
+            }
+        }
+        
+        listeners.invoke { (listener) in
+            if listener.listenerType == .person || listener.listenerType == .all {
+                listener.onPersonChange(change: .update, personJobs:  defaultPerson.jobs)
+            }
+        }
         
     }
     
