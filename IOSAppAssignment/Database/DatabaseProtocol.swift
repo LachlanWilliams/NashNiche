@@ -14,14 +14,14 @@ enum DatabaseChange {
 }
 
 enum ListenerType {
-    case user
+    case person
     case jobs
     case all
 }
 
 protocol DatabaseListener: AnyObject {
     var listenerType: ListenerType {get set}
-    func onParentJobChange(change: DatabaseChange, parentJobs: [Job])
+    func onPersonChange(change: DatabaseChange, personJobs: [Job])
     func onAllJobsChange(change: DatabaseChange, jobs: [Job])
 }
 
@@ -31,6 +31,13 @@ protocol DatabaseProtocol: AnyObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
     
-    func addJob(title: String, location: String, dateTime: Date, duration: String, description: String)-> Job
+    func addJob(title: String, location: String, dateTime: String, duration: String, desc: String)-> Job
     func deleteJob(job: Job)
+    
+    var defaultPerson: Person {get}
+    func addPerson(fName: String, lName: String, email: String, password: String ) -> Person
+    func deletePerson(person: Person)
+    func addJobtoPerson(job: Job, person: Person) -> Bool
+    func removeJobfromPerson(job: Job, person: Person)
+    
 }

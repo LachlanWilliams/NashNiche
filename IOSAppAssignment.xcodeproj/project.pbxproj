@@ -14,7 +14,6 @@
 		1E552CCC2BDF6CC00076DA9F /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E552CCB2BDF6CC00076DA9F /* FirebaseFirestoreSwift */; };
 		1E552CCE2BDF726B0076DA9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E552CCD2BDF726B0076DA9F /* GoogleService-Info.plist */; };
 		1E552CD02BDF756F0076DA9F /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E552CCF2BDF756F0076DA9F /* Job.swift */; };
-		1E552CD22BDF7AF20076DA9F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E552CD12BDF7AF20076DA9F /* User.swift */; };
 		1E552CD42BDF7CB20076DA9F /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E552CD32BDF7CB20076DA9F /* FirebaseController.swift */; };
 		1E6235AB2BC8E4F100376450 /* ParentPreviewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */; };
 		1E6235AD2BC8E88600376450 /* NannyPreviewJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */; };
@@ -34,6 +33,7 @@
 		1E730DF82BC60E720004EADE /* IOSAppAssignmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DF72BC60E720004EADE /* IOSAppAssignmentUITestsLaunchTests.swift */; };
 		1E730E052BC6121B0004EADE /* preSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730E042BC6121B0004EADE /* preSignUpViewController.swift */; };
 		1E730E072BC612430004EADE /* signUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730E062BC612430004EADE /* signUpViewController.swift */; };
+		1E7517E62BE0659700E43483 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7517E52BE0659700E43483 /* Person.swift */; };
 		1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD1F932BC62BCF00548B5E /* loginViewController.swift */; };
 		1EBD1F962BC62BF200548B5E /* parentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -60,7 +60,6 @@
 		1E3042C12BC65BB9009989A6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1E552CCD2BDF726B0076DA9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1E552CCF2BDF756F0076DA9F /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
-		1E552CD12BDF7AF20076DA9F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1E552CD32BDF7CB20076DA9F /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		1E6235AA2BC8E4F100376450 /* ParentPreviewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentPreviewJobViewController.swift; sourceTree = "<group>"; };
 		1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NannyPreviewJobViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		1E730DF72BC60E720004EADE /* IOSAppAssignmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSAppAssignmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1E730E042BC6121B0004EADE /* preSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preSignUpViewController.swift; sourceTree = "<group>"; };
 		1E730E062BC612430004EADE /* signUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpViewController.swift; sourceTree = "<group>"; };
+		1E7517E52BE0659700E43483 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		1EBD1F932BC62BCF00548B5E /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentHomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,8 +161,8 @@
 				1E730DD42BC60E700004EADE /* AppDelegate.swift */,
 				1E552CCD2BDF726B0076DA9F /* GoogleService-Info.plist */,
 				1E3042C12BC65BB9009989A6 /* TabBarController.swift */,
+				1E7517E52BE0659700E43483 /* Person.swift */,
 				1E552CCF2BDF756F0076DA9F /* Job.swift */,
-				1E552CD12BDF7AF20076DA9F /* User.swift */,
 				1E6235B32BCF700E00376450 /* DataModel */,
 				1E6235AC2BC8E88600376450 /* NannyPreviewJobViewController.swift */,
 				1E3042BF2BC65608009989A6 /* profileViewController.swift */,
@@ -347,7 +347,6 @@
 				1E6235C32BCF745100376450 /* DatabaseProtocol.swift in Sources */,
 				1E552CD42BDF7CB20076DA9F /* FirebaseController.swift in Sources */,
 				1E6235C72BCF82B500376450 /* NannyHomeTableViewController.swift in Sources */,
-				1E552CD22BDF7AF20076DA9F /* User.swift in Sources */,
 				1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */,
 				1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */,
 				1E730DD92BC60E700004EADE /* ViewController.swift in Sources */,
@@ -355,6 +354,7 @@
 				1E6235AD2BC8E88600376450 /* NannyPreviewJobViewController.swift in Sources */,
 				1E6235AB2BC8E4F100376450 /* ParentPreviewJobViewController.swift in Sources */,
 				1E3042C02BC65608009989A6 /* profileViewController.swift in Sources */,
+				1E7517E62BE0659700E43483 /* Person.swift in Sources */,
 				1E6235C52BCF770700376450 /* CoreDataController.swift in Sources */,
 				1E6235C12BCF738700376450 /* MulticastDelegate.swift in Sources */,
 				1E552CD02BDF756F0076DA9F /* Job.swift in Sources */,

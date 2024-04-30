@@ -1,14 +1,14 @@
 //
-//  User.swift
+//  Person.swift
 //  IOSAppAssignment
 //
-//  Created by Lachlan J Williams on 29/4/2024.
+//  Created by Lachlan J Williams on 30/4/2024.
 //
 
 import UIKit
 import FirebaseFirestoreSwift
 
-class User: NSObject, Codable {
+class Person: NSObject, Codable {
     @DocumentID var id: String?
     var fName: String?
     var lName: String?
