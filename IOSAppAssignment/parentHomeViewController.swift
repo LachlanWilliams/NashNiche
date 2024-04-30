@@ -23,11 +23,44 @@ class parentHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
 
         // Do any additional setup after loading the view.
     }
     
-
+    
+    @IBAction func postJob(_ sender: Any) {
+        guard let title = titleTextField.text, let location = locationTextField.text, let dateTime = timeDateTextField.text, let duration = durationTextField.text, let desc = descTextField.text else{
+            return
+        }
+        if title.isEmpty || location.isEmpty || dateTime.isEmpty || duration.isEmpty || desc.isEmpty {
+            var errorMsg = "Please ensure all fields are filled:\n"
+            if title.isEmpty {
+                errorMsg += "- provide a title\n"
+            }
+            if location.isEmpty {
+                errorMsg += "- provide a location\n"
+            }
+            if dateTime.isEmpty {
+                errorMsg += "- provide a dateTime\n"
+            }
+            if duration.isEmpty {
+                errorMsg += "- provide a duration\n"
+            }
+            if desc.isEmpty {
+                errorMsg += "- provide a desc\n"
+            }
+            
+            displayMessage(title: "Not all fields filled", message: errorMsg)
+            return
+        }
+        
+        let _ = databaseController?.addJob(title: title, location: location, dateTime: dateTime, duration: duration, desc: desc)
+        
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1BF7782BE0956E0078FDE4 /* UIViewController+displayMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1BF7772BE0956E0078FDE4 /* UIViewController+displayMessage.swift */; };
 		1E3042C02BC65608009989A6 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3042BF2BC65608009989A6 /* profileViewController.swift */; };
 		1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3042C12BC65BB9009989A6 /* TabBarController.swift */; };
 		1E552CCE2BDF726B0076DA9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1E552CCD2BDF726B0076DA9F /* GoogleService-Info.plist */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E1BF7772BE0956E0078FDE4 /* UIViewController+displayMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+displayMessage.swift"; sourceTree = "<group>"; };
 		1E3042BF2BC65608009989A6 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		1E3042C12BC65BB9009989A6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		1E552CCD2BDF726B0076DA9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				1E730DDF2BC60E720004EADE /* LaunchScreen.storyboard */,
 				1E730DE22BC60E720004EADE /* Info.plist */,
 				1E730E042BC6121B0004EADE /* preSignUpViewController.swift */,
+				1E1BF7772BE0956E0078FDE4 /* UIViewController+displayMessage.swift */,
 			);
 			path = IOSAppAssignment;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				1E6235C32BCF745100376450 /* DatabaseProtocol.swift in Sources */,
 				1E552CD42BDF7CB20076DA9F /* FirebaseController.swift in Sources */,
 				1E6235C72BCF82B500376450 /* NannyHomeTableViewController.swift in Sources */,
+				1E1BF7782BE0956E0078FDE4 /* UIViewController+displayMessage.swift in Sources */,
 				1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */,
 				1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */,
 				1E730DD92BC60E700004EADE /* ViewController.swift in Sources */,

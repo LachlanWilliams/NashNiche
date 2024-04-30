@@ -161,6 +161,9 @@
                                 <rect key="frame" x="50" y="725.33333333333337" width="293" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Post Job"/>
+                                <connections>
+                                    <action selector="postJob:" destination="EgD-oo-esn" eventType="touchUpInside" id="dt2-jb-Wui"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PsI-h2-sbu"/>
