@@ -22,7 +22,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     var jobsRef: CollectionReference?
     var personsRef: CollectionReference?
     var currentUser: FirebaseAuth.User?
-    
+
     override init() {
         FirebaseApp.configure()
         authController = Auth.auth()

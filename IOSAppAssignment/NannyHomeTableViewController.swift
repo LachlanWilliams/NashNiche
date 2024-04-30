@@ -8,6 +8,10 @@
 import UIKit
 
 class NannyHomeTableViewController: UITableViewController, DatabaseListener {
+    func onPersonChange(change: DatabaseChange, personJobs: [Job]) {
+        
+    }
+    
     
     var listenerType = ListenerType.jobs
     weak var databaseController: DatabaseProtocol?
@@ -58,10 +62,10 @@ class NannyHomeTableViewController: UITableViewController, DatabaseListener {
         dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm a" // Customize the date format as per your preference
 
         // Convert the Date to a formatted string
-        let dateString = dateFormatter.string(from: job.dateTime!)
+        //let dateString = dateFormatter.string(from: job.dateTime!)
 
         // Assign the formatted string to the detail text label of your jobCell
-        jobCell.detailTextLabel?.text = dateString
+        jobCell.detailTextLabel?.text = job.dateTime
 
         
         return jobCell
