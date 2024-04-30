@@ -9,6 +9,18 @@ import UIKit
 
 class parentHomeViewController: UIViewController {
     
+    @IBOutlet weak var titleTextField: UITextField!
+    
+    @IBOutlet weak var locationTextField: UITextField!
+    
+    @IBOutlet weak var timeDateTextField: UITextField!
+    
+    @IBOutlet weak var durationTextField: UITextField!
+    
+    @IBOutlet weak var descTextField: UITextField!
+    
+    weak var databaseController: DatabaseProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
