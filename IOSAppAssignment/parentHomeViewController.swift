@@ -57,7 +57,25 @@ class parentHomeViewController: UIViewController {
             return
         }
         
-        let _ = databaseController?.addJob(title: title, location: location, dateTime: dateTime, duration: duration, desc: desc)
+        // Display confirmation alert
+        let confirmAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to post this job?", preferredStyle: .alert)
+        
+        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            // Add job to the database
+            let _ = self.databaseController?.addJob(title: title, location: location, dateTime: dateTime, duration: duration, desc: desc)
+            
+            // Clear text fields
+            self.titleTextField.text = ""
+            self.locationTextField.text = ""
+            self.timeDateTextField.text = ""
+            self.durationTextField.text = ""
+            self.descTextField.text = ""
+        }))
+        
+        confirmAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        present(confirmAlert, animated: true, completion: nil)
+        //let _ = databaseController?.addJob(title: title, location: location, dateTime: dateTime, duration: duration, desc: desc)
         
     }
     

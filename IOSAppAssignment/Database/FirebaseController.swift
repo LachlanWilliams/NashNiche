@@ -64,6 +64,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         job.title = title
         job.location = location
         job.dateTime = dateTime
+        job.duration = duration
         job.desc = desc
         
         do {
