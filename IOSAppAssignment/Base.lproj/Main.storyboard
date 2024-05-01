@@ -781,7 +781,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="SUb-F0-A5S" kind="show" id="RKh-Ww-Lfp"/>
+                                    <segue destination="SUb-F0-A5S" kind="show" identifier="nannyPreviewSegue" id="RKh-Ww-Lfp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -910,6 +910,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Ni-OU-BRi"/>
+                    <connections>
+                        <outlet property="dateTimeLabel" destination="eaS-rp-xhC" id="FRW-Zv-2V9"/>
+                        <outlet property="descLabel" destination="t1K-Sb-T2H" id="PWz-40-WNJ"/>
+                        <outlet property="durationLabel" destination="w1T-2r-f2B" id="KzB-zO-g0X"/>
+                        <outlet property="locationLabel" destination="XuO-Dr-4qM" id="VNI-i6-X4P"/>
+                        <outlet property="titleLabel" destination="b3F-9L-vDE" id="Tw3-VH-him"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tne-cz-wAH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

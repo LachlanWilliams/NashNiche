@@ -84,7 +84,16 @@ class NannyHomeTableViewController: UITableViewController, DatabaseListener {
         return jobCell
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "nannyPreviewSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let selectedJob = allJobs[indexPath.row]
+                if let destinationVC = segue.destination as? NannyPreviewJobViewController {
+                    destinationVC.job = selectedJob
+                }
+            }
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -132,47 +141,31 @@ class NannyHomeTableViewController: UITableViewController, DatabaseListener {
 
 }
 
+
+
 //
-//  DatabaseProtocol.swift
-//  FIT3178-W04-Lab
+//  MyCardsTableViewController.swift
+//  Lab05Alternative
 //
-//  Created by Jason Haasz on 4/1/2023.
+//  Created by Lachlan J Williams on 4/4/2024.
 //
 
 //import UIKit
 //
-//class AllHeroesTableViewController: UITableViewController, UISearchResultsUpdating, DatabaseListener {
+//class MyCardsTableViewController: UITableViewController, DatabaseListener {
 //    
-//    let SECTION_HERO = 0
-//    let SECTION_INFO = 1
+//    let CELL_CARD = "cardCell"
 //    
-//    let CELL_HERO = "heroCell"
-//    let CELL_INFO = "totalCell"
+//    var allCards: [MTGCard] = []
 //    
-//    var allHeroes: [Superhero] = []
-//    var filteredHeroes: [Superhero] = []
-//
-//    var listenerType = ListenerType.heroes
 //    weak var databaseController: DatabaseProtocol?
 //    
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
-//
-//        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-//        databaseController = appDelegate?.databaseController
-//        
-//        let searchController = UISearchController(searchResultsController: nil)
-//        searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.placeholder = "Search All Heroes"
-//        navigationItem.searchController = searchController
-//                
-//        // This view controller decides how the search controller is presented
-//        definesPresentationContext = true
-//
-//        filteredHeroes = allHeroes
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        databaseController = appDelegate.databaseController
 //    }
-//
+//    
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //        databaseController?.addListener(listener: self)
@@ -183,126 +176,77 @@ class NannyHomeTableViewController: UITableViewController, DatabaseListener {
 //        databaseController?.removeListener(listener: self)
 //    }
 //    
-//    func onAllHeroesChange(change: DatabaseChange, heroes: [Superhero]) {
-//        allHeroes = heroes
-//        updateSearchResults(for: navigationItem.searchController!)
-//    }
-//    
-//    func onTeamChange(change: DatabaseChange, teamHeroes: [Superhero]) {
-//        
-//    }
 //    // MARK: - Table view data source
-//
 //    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 2
-//        
+//        return 1
 //    }
-//
+//    
 //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        switch section {
-//            case SECTION_HERO:
-//                return filteredHeroes.count
-//            case SECTION_INFO:
-//                return 1
-//            default:
-//                return 0
-//        }
+//        return allCards.count
 //    }
-//
+//    
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.section == SECTION_HERO {
-//            // Configure and return a hero cell
-//            let heroCell = tableView.dequeueReusableCell(withIdentifier: CELL_HERO, for: indexPath)
-//            
-//            var content = heroCell.defaultContentConfiguration()
-//            let hero = filteredHeroes[indexPath.row]
-//            content.text = hero.name
-//            content.secondaryText = hero.abilities
-//            heroCell.contentConfiguration = content
-//            
-//            return heroCell
-//        }
-//        else {
-//            let infoCell = tableView.dequeueReusableCell(withIdentifier: CELL_INFO, for: indexPath) as! HeroCountTableViewCell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_CARD, for: indexPath)
+//        let card = allCards[indexPath.row]
 //
-//            infoCell.totalLabel?.text = "\(filteredHeroes.count) heroes in the database"
-//                    
-//            return infoCell
+//        cell.textLabel?.text = card.name
+//        cell.detailTextLabel?.text = card.setname
+//        
+//        guard let url = URL(string: card.imageURL ?? "") else {
+//            return cell
 //        }
+//        
+//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+//            guard let data = data, error == nil else {
+//                return
+//            }
+//
+//            DispatchQueue.main.async {
+//                let originalImage = UIImage(data: data)
+//                let thumbnailImage = self.createThumbnailImage(image: originalImage!, size: CGSize(width: 20, height: 20))
+//                cell.imageView?.image = thumbnailImage
+//                cell.setNeedsLayout()
+//            }
+//        }
+//        task.resume()
+//        
+//        return cell
 //    }
-//
-//    // Override to support conditional editing of the table view.
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        if indexPath.section == SECTION_HERO {
-//            return true
-//        }
-//
-//        return false
-//    }
-//
-//    // Override to support editing the table view.
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete && indexPath.section == SECTION_HERO {
-//            let hero = filteredHeroes[indexPath.row]
-//            databaseController?.deleteSuperhero(hero: hero)
-//        }
-//    }
-//
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let hero = filteredHeroes[indexPath.row]
-//        let heroAdded = databaseController?.addHeroToTeam(hero: hero, team: databaseController!.defaultTeam) ?? false
-//        if heroAdded{
-//            navigationController?.popViewController(animated: false)
-//            return
-//        }
-//        displayMessage(title: "Party Full", message: "Unable to add more members to party")
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//    }
-//
 //    
-//    /*
-//    // Override to support rearranging the table view.
-//    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-//
+//    func createThumbnailImage(image: UIImage, size: CGSize) -> UIImage? {
+//            // Resize the image while maintaining the aspect ratio
+//            let scale = max(size.width/image.size.width, size.height/image.size.height)
+//            let width = image.size.width * scale
+//            let height = image.size.height * scale
+//            let newSize = CGSize(width: width, height: height)
+//            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+//            image.draw(in: CGRect(origin: CGPoint.zero, size: newSize))
+//            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+//            UIGraphicsEndImageContext()
+//            
+//            // Compress the image
+//            if let jpegData = newImage?.jpegData(compressionQuality: 0.8) {
+//                return UIImage(data: jpegData)
+//            } else {
+//                return nil
+//            }
 //    }
-//    */
-//
-//    /*
-//    // Override to support conditional rearranging of the table view.
-//    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-//        // Return false if you do not want the item to be re-orderable.
-//        return true
-//    }
-//    */
-//
-//    // MARK: - Navigation
-//
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //    
-//    }
-//
-//    // MARK: - Search Results Updating protocol
-//
-//    func updateSearchResults(for searchController: UISearchController) {
-//        guard let searchText = searchController.searchBar.text?.lowercased() else {
-//            return
-//        }
-//
-//        if searchText.count > 0 {
-//            filteredHeroes = allHeroes.filter({ (hero: Superhero) -> Bool in
-//                return (hero.name?.lowercased().contains(searchText) ?? false)
-//            })
-//        } else {
-//            filteredHeroes = allHeroes
-//        }
-//
+//    // MARK: - Database Listener Functions
+//    func onCardListChange(cardList: [MTGCard]) {
+//        allCards = cardList
 //        tableView.reloadData()
 //    }
-//
-//    // MARK: - Add Superhero Delegate methods
-//
 //    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showCardDetails" {
+//            if let indexPath = tableView.indexPathForSelectedRow {
+//                let selectedCard = allCards[indexPath.row]
+//                if let destinationVC = segue.destination as? CardDetailsViewController {
+//                    destinationVC.card = selectedCard
+//                }
+//            }
+//        }
+//    }
 //}
-
+//
