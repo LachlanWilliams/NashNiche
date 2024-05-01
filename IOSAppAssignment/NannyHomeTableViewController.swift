@@ -8,29 +8,39 @@
 import UIKit
 
 class NannyHomeTableViewController: UITableViewController, DatabaseListener {
-    func onPersonChange(change: DatabaseChange, personJobs: [Job]) {
-        
-    }
     
+    let SECTION_JOB = 0
+    let SECTION_INFO = 1
+    let CELL_HERO = "jobCell"
+    let CELL_INFO = "totalCell"
+    
+    var allJobs: [Job] = []
     
     var listenerType = ListenerType.jobs
     weak var databaseController: DatabaseProtocol?
     
-    var allJobs: [Job] = []
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
 
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
     }
     
     func onParentJobChange(change: DatabaseChange, parentJobs: [Job]) {
@@ -41,11 +51,14 @@ class NannyHomeTableViewController: UITableViewController, DatabaseListener {
         allJobs = jobs
     }
     
-
+    func onPersonChange(change: DatabaseChange, personJobs: [Job]) {
+        
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return allJobs.count
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
