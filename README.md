@@ -16,4 +16,4 @@ This is an app for parents and nannies. When parents usual nannies are absent, t
 - Notifications
 - web API
 - persistant data (for user info)
-- 
+- Make dateTime and duration a roller
