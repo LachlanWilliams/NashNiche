@@ -217,6 +217,7 @@
                         <outlet property="descTextField" destination="UVe-Io-7FA" id="J6y-9w-yMd"/>
                         <outlet property="durationTextField" destination="Nr8-ir-HCF" id="n9H-jv-Wnk"/>
                         <outlet property="locationTextField" destination="dCt-KP-Skn" id="ntU-mf-10w"/>
+                        <outlet property="theMap" destination="ATk-fQ-Zr0" id="b5A-TS-VJL"/>
                         <outlet property="timeDateTextField" destination="hJp-vt-TBq" id="lNk-ss-CU7"/>
                         <outlet property="titleTextField" destination="hxs-rM-IXf" id="YFq-aU-IgB"/>
                     </connections>

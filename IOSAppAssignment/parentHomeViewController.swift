@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import MapKit
 
-class parentHomeViewController: UIViewController {
+class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var titleTextField: UITextField!
     
@@ -19,14 +20,34 @@ class parentHomeViewController: UIViewController {
     
     @IBOutlet weak var descTextField: UITextField!
     
+    @IBOutlet weak var theMap: MKMapView!
+    
     weak var databaseController: DatabaseProtocol?
+    
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        
+        locationManager.delegate = self
+        
+        let status = locationManager.authorizationStatus
+        if status == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        else {
+            //locationBarButtonItem.isEnabled = (status == .authorizedWhenInUse)
+            
+        }
+        
+        let configuration = MKStandardMapConfiguration()
+        theMap.preferredConfiguration = configuration
 
+        theMap.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     
