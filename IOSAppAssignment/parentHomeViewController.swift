@@ -14,9 +14,9 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
     
     @IBOutlet weak var locationTextField: UITextField!
     
-    @IBOutlet weak var timeDateTextField: UITextField!
+    @IBOutlet weak var dateTimePicker: UIDatePicker!
     
-    @IBOutlet weak var durationTextField: UITextField!
+    @IBOutlet weak var durationPicker: UIDatePicker!
     
     @IBOutlet weak var descTextField: UITextField!
     
@@ -44,19 +44,21 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
         }
         
         let configuration = MKStandardMapConfiguration()
-        theMap.preferredConfiguration = configuration
+        //theMap.preferredConfiguration = configuration
 
-        theMap.delegate = self
+        //theMap.delegate = self
         
         // Do any additional setup after loading the view.
     }
     
     
     @IBAction func postJob(_ sender: Any) {
-        guard let title = titleTextField.text, let location = locationTextField.text, let dateTime = timeDateTextField.text, let duration = durationTextField.text, let desc = descTextField.text else{
+        let dateTime = dateTimePicker.date
+        let duration = durationPicker.date
+        guard let title = titleTextField.text, let location = locationTextField.text, let desc = descTextField.text else{
             return
         }
-        if title.isEmpty || location.isEmpty || dateTime.isEmpty || duration.isEmpty || desc.isEmpty {
+        if title.isEmpty || location.isEmpty || /*dateTime.isEmpty || duration.isEmpty ||*/ desc.isEmpty {
             var errorMsg = "Please ensure all fields are filled:\n"
             if title.isEmpty {
                 errorMsg += "- provide a title\n"
@@ -64,12 +66,12 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
             if location.isEmpty {
                 errorMsg += "- provide a location\n"
             }
-            if dateTime.isEmpty {
-                errorMsg += "- provide a dateTime\n"
-            }
-            if duration.isEmpty {
-                errorMsg += "- provide a duration\n"
-            }
+//            if dateTime.isEmpty {
+//                errorMsg += "- provide a dateTime\n"
+//            }
+//            if duration.isEmpty {
+//                errorMsg += "- provide a duration\n"
+//            }
             if desc.isEmpty {
                 errorMsg += "- provide a desc\n"
             }
@@ -83,14 +85,13 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             // Add job to the database
-            let _ = self.databaseController?.addJob(title: title, location: location, dateTime: dateTime, duration: duration, desc: desc)
+            let _ = self.databaseController?.addJob(title: title, location: location, dateTime: dateTime.description, duration: duration.description, desc: desc)
             
             // Clear text fields
             self.titleTextField.text = ""
             self.locationTextField.text = ""
-            self.timeDateTextField.text = ""
-            self.durationTextField.text = ""
             self.descTextField.text = ""
+            self.dateTimePicker.setDate(Date(), animated: true)
         }))
         
         confirmAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
