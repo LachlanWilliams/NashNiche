@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class NannyPreviewJobViewController: UIViewController {
 
@@ -22,7 +23,7 @@ class NannyPreviewJobViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    
+    @IBOutlet weak var theMap: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +34,30 @@ class NannyPreviewJobViewController: UIViewController {
             locationLabel.text = job.location
             durationLabel.text = job.duration
             descLabel.text = job.desc
+            
+            addMarkerForLocation(job.location!)
         }
+        
     }
     
 
+    func addMarkerForLocation(_ location: String) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(location) { [weak self] placemarks, error in
+            guard let self = self else { return }
+            
+            if let placemark = placemarks?.first, let location = placemark.location {
+                let mark = MKPlacemark(placemark: placemark)
+                
+                // Set region to display the marker
+                let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                self.theMap.setRegion(region, animated: true)
+                
+                // Add annotation
+                self.theMap.addAnnotation(mark)
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
