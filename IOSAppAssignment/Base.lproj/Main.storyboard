@@ -213,6 +213,7 @@
                         <outlet property="descTextField" destination="kQd-jk-WjE" id="0gf-JX-mx9"/>
                         <outlet property="durationPicker" destination="Sra-Tn-cZd" id="sBQ-UH-cku"/>
                         <outlet property="locationTextField" destination="Ttx-Cq-c12" id="RLJ-ir-81f"/>
+                        <outlet property="theMap" destination="Qh1-jG-wTZ" id="Vue-e8-pyC"/>
                         <outlet property="titleTextField" destination="Oqo-Fm-40s" id="vfL-Ag-byF"/>
                     </connections>
                 </viewController>

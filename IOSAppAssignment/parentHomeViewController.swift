@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var titleTextField: UITextField!
     
@@ -25,6 +25,8 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
     weak var databaseController: DatabaseProtocol?
     
     let locationManager = CLLocationManager()
+    
+    var currentAnnotation: MKAnnotation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +45,12 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
             
         }
         
-        let configuration = MKStandardMapConfiguration()
+        //let configuration = MKStandardMapConfiguration()
+        
+        configureMapWithLocation("33 Thanet Street, VIC, 3144")
+        
+        // Set text field delegate
+        locationTextField.delegate = self
         //theMap.preferredConfiguration = configuration
 
         //theMap.delegate = self
@@ -101,6 +108,46 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        if textField == locationTextField {
+            if let location = textField.text {
+                // Update map with entered location
+                configureMapWithLocation(location)
+            }
+        }
+        
+        return true
+    }
+    
+    func configureMapWithLocation(_ location: String) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(location) { [weak self] placemarks, error in
+            guard let self = self else { return }
+            
+            // Remove old annotation
+            if let annotation = self.currentAnnotation {
+                self.theMap.removeAnnotation(annotation)
+            }
+            
+            if let placemark = placemarks?.first, let location = placemark.location {
+                let mark = MKPlacemark(placemark: placemark)
+                
+                var region = self.theMap.region
+                
+                region.center = location.coordinate
+                region.span.longitudeDelta /= 8.0
+                region.span.latitudeDelta /= 8.0
+                self.theMap.setRegion(region, animated: true)
+                
+                // Add new annotation
+                self.theMap.addAnnotation(mark)
+                self.currentAnnotation = mark
+            }
+        }
+    }
+
     /*
     // MARK: - Navigation
 
