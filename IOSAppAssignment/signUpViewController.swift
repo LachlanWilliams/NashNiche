@@ -82,9 +82,16 @@ class signUpViewController: UIViewController {
                 return
             } else {}
         }
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                // Handle sign-in failure
+                strongSelf.showAlert(message: "Failed to sign in: \(error.localizedDescription)")
+            }
+        }
         
         // Add person to the database
-        let _ = databaseController?.addPerson(fName: firstName, lName: lastName, email: email, isNanny: self.isNanny)
+        let _ = databaseController?.addPerson(fName: firstName, lName: lastName, email: email, isNanny: self.isNanny, uid: Auth.auth().currentUser?.uid ?? "")
         let userInfo = "First Name: \(firstName)\nLast Name: \(lastName)\nEmail: \(email)"
         let alert = UIAlertController(title: "Signup Successful", message: userInfo, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
@@ -96,19 +103,12 @@ class signUpViewController: UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
         
-        // If all fields are completed, create an alert with the user's information
-//        let userInfo = "First Name: \(firstName)\nLast Name: \(lastName)\nEmail: \(email)\nPassword: \(password)"
-//        let alert = UIAlertController(title: "User Information", message: userInfo, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-//            // Perform segue based on user type after dismissing the alert
-//            if self.userType == UserType.nanny {
-//                self.performSegue(withIdentifier: "segueNannyHome", sender: self.userType)
-//            } else {
-//                self.performSegue(withIdentifier: "segueParentHome", sender: self.userType)
-//            }
-//        }))
-//        present(alert, animated: true, completion: nil)
-
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     /*

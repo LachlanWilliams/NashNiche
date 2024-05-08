@@ -35,7 +35,7 @@ protocol DatabaseProtocol: AnyObject {
     func deleteJob(job: Job)
     
     var defaultPerson: Person {get}
-    func addPerson(fName: String, lName: String, email: String, isNanny: Bool ) -> Person
+    func addPerson(fName: String, lName: String, email: String, isNanny: Bool, uid: String) -> Person
     func deletePerson(person: Person)
     func addJobtoPerson(job: Job, person: Person) -> Bool
     func removeJobfromPerson(job: Job, person: Person)

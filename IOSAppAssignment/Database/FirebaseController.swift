@@ -84,13 +84,21 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
-    func addPerson(fName: String, lName: String, email: String, isNanny: Bool) -> Person {
+    func addPerson(fName: String, lName: String, email: String, isNanny: Bool, uid: String ) -> Person {
         let person = Person()
         person.fName = fName
         person.lName = lName
         person.email = email
         person.isNanny = isNanny
-        person.id = Auth.auth().currentUser?.uid
+        person.uid = uid
+        do{
+            if let personRef = try personsRef?.addDocument(from: person) {
+                person.id = personRef.documentID
+            }
+        } catch {
+            print("Failed to serialize job")
+        }
+        
         return person
     }
     
@@ -148,7 +156,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     func setupPersonListener(){
-        personsRef = database.collection("peron")
+        personsRef = database.collection("person")
         
         personsRef?.whereField("email", isEqualTo: DEFAULT_PERSON_EMAIL).addSnapshotListener { [weak self] (querySnapshot, error) in
             guard let querySnapshot = querySnapshot, let personSnapshot = querySnapshot.documents.first else {
@@ -208,10 +216,5 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
         
     }
-    
-    
-    //TODO: check if these are getting used
-
-    
 
 }
