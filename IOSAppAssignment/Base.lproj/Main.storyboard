@@ -411,7 +411,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vuQ-kU-eVQ">
                                 <rect key="frame" x="40" y="410" width="313" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEV-9l-Rlm">
                                 <rect key="frame" x="40" y="459" width="313" height="35"/>
@@ -537,7 +537,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XgG-Tt-ooK">
                                 <rect key="frame" x="40" y="390" width="313" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scO-6B-xV6">
                                 <rect key="frame" x="40" y="439" width="313" height="35"/>
@@ -927,9 +927,9 @@
         <segue reference="57V-CS-3A2"/>
         <segue reference="tmp-Sl-Hji"/>
         <segue reference="S0y-Pw-R0j"/>
-        <segue reference="T0g-mu-ue9"/>
-        <segue reference="Hg8-De-FQ8"/>
-        <segue reference="MI5-7s-zPE"/>
+        <segue reference="0IL-uu-qed"/>
+        <segue reference="s4j-mj-Rvq"/>
+        <segue reference="TkT-se-zGH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="house.fill" catalog="system" width="32" height="32"/>
