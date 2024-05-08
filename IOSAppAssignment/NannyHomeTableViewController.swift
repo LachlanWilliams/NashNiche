@@ -22,6 +22,7 @@ class NannyHomeTableViewController: UITableViewController, DatabaseListener {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
