@@ -13,7 +13,7 @@ class Person: NSObject, Codable {
     var fName: String?
     var lName: String?
     var email: String?
-    var password: String?
+    var isNanny: Bool?
     var jobs: [Job] = []
 
 }

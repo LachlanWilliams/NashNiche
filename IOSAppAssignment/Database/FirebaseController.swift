@@ -84,15 +84,13 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
-    func addPerson(fName: String, lName: String, email: String, password: String ) -> Person {
+    func addPerson(fName: String, lName: String, email: String, isNanny: Bool) -> Person {
         let person = Person()
         person.fName = fName
         person.lName = lName
         person.email = email
-        person.password = password
-        if let personRef = personsRef?.addDocument(data: ["email" : email]) {
-            person.id = personRef.documentID
-        }
+        person.isNanny = isNanny
+        person.id = Auth.auth().currentUser?.uid
         return person
     }
     
@@ -211,13 +209,9 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
-    func loginUser(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
-        authController.signIn(withEmail: email, password: password, completion: completion)
-    }
+    
+    //TODO: check if these are getting used
 
-    func registerUser(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
-        authController.createUser(withEmail: email, password: password, completion: completion)
-    }
     
 
 }
