@@ -216,5 +216,13 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
         
     }
+    
+    func loginUser(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
+        authController.signIn(withEmail: email, password: password, completion: completion)
+    }
+
+    func registerUser(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
+        authController.createUser(withEmail: email, password: password, completion: completion)
+    }
 
 }
