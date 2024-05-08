@@ -62,6 +62,12 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
     @IBAction func postJob(_ sender: Any) {
         let dateTime = dateTimePicker.date
         let duration = durationPicker.date
+        
+        //let now = Date().timeIntervalSince1970
+        //let durationTime = duration.timeIntervalSince1970
+        
+        let durationInHours = (Date().timeIntervalSince1970 - duration.timeIntervalSince1970) / 3600
+        
         guard let title = titleTextField.text, let location = locationTextField.text, let desc = descTextField.text else{
             return
         }
@@ -92,7 +98,7 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             // Add job to the database
-            let _ = self.databaseController?.addJob(title: title, location: location, dateTime: dateTime.description, duration: duration.description, desc: desc)
+            let _ = self.databaseController?.addJob(title: title, location: location, dateTime: dateTime.description, duration: String(format: "%.2f", durationInHours), desc: desc)
             
             // Clear text fields
             self.titleTextField.text = ""

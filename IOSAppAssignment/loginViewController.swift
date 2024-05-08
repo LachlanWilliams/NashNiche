@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class loginViewController: UIViewController {
 
     var userType: UserType?
+    
+    @IBOutlet weak var emailTextInput: UITextField!
+    
+    @IBOutlet weak var passwordTextInput: UITextField!
     
     @IBOutlet weak var loginLabel: UILabel!
     
@@ -26,21 +31,41 @@ class loginViewController: UIViewController {
     }
     
     @IBAction func performLogin(_ sender: Any) {
-        if userType == UserType.nanny {
-            performSegue(withIdentifier: "segueNannyHome", sender: userType)
-        }else{
-            performSegue(withIdentifier: "segueParentHome", sender: userType)
+        
+        // Check if email and password are not empty
+        guard let email = emailTextInput.text, !email.isEmpty,
+              let password = passwordTextInput.text, !password.isEmpty else {
+            showAlert(message: "Please enter both email and password.")
+            return
+        }
+        
+        // Perform Firebase sign-in
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                // Handle sign-in failure
+                strongSelf.showAlert(message: "Failed to sign in: \(error.localizedDescription)")
+            } else {
+                // Sign-in successful
+                if strongSelf.userType == UserType.nanny {
+                    strongSelf.performSegue(withIdentifier: "segueNannyHome", sender: strongSelf.userType)
+                } else {
+                    strongSelf.performSegue(withIdentifier: "segueParentHome", sender: strongSelf.userType)
+                }
+            }
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
-    */
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Pass user type to the destination view controller if needed
+    }
 
 }
