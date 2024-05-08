@@ -12,6 +12,8 @@ class loginViewController: UIViewController {
 
     var userType: UserType?
     
+    weak var databaseController: DatabaseProtocol?
+    
     @IBOutlet weak var emailTextInput: UITextField!
     
     @IBOutlet weak var passwordTextInput: UITextField!
@@ -20,6 +22,10 @@ class loginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
+        
         if let userType = userType {
             switch userType {
             case .parent:
