@@ -338,6 +338,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="9rU-ev-a31"/>
+                    <connections>
+                        <outlet property="jobTable" destination="0eJ-7z-aqo" id="8ra-Gh-LBh"/>
+                        <outlet property="jobslider" destination="uqv-v3-EU9" id="HSh-aY-P3I"/>
+                        <outlet property="nameLabel" destination="5sG-yc-snd" id="NVP-j6-Xe3"/>
+                        <outlet property="profilepic" destination="iLQ-4b-cZZ" id="YSP-qU-Gid"/>
+                        <outlet property="usertypeLabel" destination="cIG-Jg-GhK" id="hJn-iM-hER"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0E-0k-4CB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -932,8 +939,8 @@
         <segue reference="TkT-se-zGH"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="house.fill" catalog="system" width="32" height="32"/>
-        <image name="magnifyingglass" catalog="system" width="32" height="32"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">

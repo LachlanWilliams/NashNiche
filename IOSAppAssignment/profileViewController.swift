@@ -9,6 +9,18 @@ import UIKit
 
 class profileViewController: UIViewController {
 
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var usertypeLabel: UILabel!
+    
+    @IBOutlet weak var profilepic: UIImageView!
+    
+    @IBOutlet weak var jobslider: UISegmentedControl!
+    
+    @IBOutlet weak var jobTable: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
