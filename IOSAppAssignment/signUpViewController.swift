@@ -82,7 +82,13 @@ class signUpViewController: UIViewController {
                 return
             } else {
                 // Adding the person to the database
-                let _ = self.databaseController?.addPerson(fName: firstName, lName: lastName, email: email, isNanny: self.isNanny, uid: Auth.auth().currentUser?.uid ?? "")
+                let _ = self.databaseController?.addPerson(fName: firstName, lName: lastName, email: email, isNanny: self.isNanny, uid: Auth.auth().currentUser?.uid ?? "");
+                
+                // Set person as currentPerson in the database
+                Task{
+                    let _ = await self.databaseController?.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "");
+                }
+
                 let userInfo = "First Name: \(firstName)\nLast Name: \(lastName)\nEmail: \(email)"
                 let alert = UIAlertController(title: "Signup Successful", message: userInfo, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in

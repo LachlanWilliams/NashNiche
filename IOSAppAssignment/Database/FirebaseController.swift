@@ -11,11 +11,12 @@ import Firebase
 import FirebaseFirestoreSwift
 
 class FirebaseController: NSObject, DatabaseProtocol {
-    
+        
     let DEFAULT_PERSON_EMAIL = "DefaultPerson@email"
     var listeners = MulticastDelegate<DatabaseListener>()
     var jobList: [Job]
     var defaultPerson: Person
+    var currentPerson: Person
     
     var authController: Auth
     var database: Firestore
@@ -29,15 +30,17 @@ class FirebaseController: NSObject, DatabaseProtocol {
         database = Firestore.firestore()
         jobList = [Job]()
         defaultPerson = Person()
+        currentPerson = Person()
         super.init()
         
         Task {
-            do {
-                let authDataResult = try await authController.signInAnonymously()
-                currentUser = authDataResult.user
-            } catch {
-                fatalError("Firebase Authentication Failed with Error \(String(describing: error))")
-            }
+            // now there won't be a new Anonymous user everytime the app starts up
+//            do {
+//                let authDataResult = try await authController.signInAnonymously()
+//                currentUser = authDataResult.user
+//            } catch {
+//                fatalError("Firebase Authentication Failed with Error \(String(describing: error))")
+//            }
             self.setupJobListener()
         }
     }
@@ -91,9 +94,11 @@ class FirebaseController: NSObject, DatabaseProtocol {
         person.email = email
         person.isNanny = isNanny
         person.uid = uid
+        person.id = uid
         do{
-            if let personRef = try personsRef?.addDocument(from: person) {
-                person.id = personRef.documentID
+            // here we are setting the new Person doc to have the same ID as the User
+            if let personRef = try personsRef?.document(uid).setData(from: person){
+                
             }
         } catch {
             print("Failed to serialize job")
@@ -123,6 +128,18 @@ class FirebaseController: NSObject, DatabaseProtocol {
             if let removedJobRef = jobsRef?.document(jobID) {
                 personsRef?.document(personID).updateData(["jobs": FieldValue.arrayRemove([removedJobRef])])
             }
+        }
+    }
+    
+    // TODO: THIS HASN'T BEEN TESTED
+    func setCurrentPerson(id: String) async {
+        //let ref = personsRef?.document(id)
+        do {
+            let person = try await personsRef?.document(id).getDocument(as: Person.self)
+            print("This is the currentPerons ID: \(person?.email ?? "no email")")
+            currentPerson = person!
+        } catch {
+            print("Error decoding person: \(error)")
         }
     }
     
@@ -217,12 +234,39 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
-    func loginUser(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
-        authController.signIn(withEmail: email, password: password, completion: completion)
-    }
+//    func setCurrentPerson(email: String){
+//        personsRef?.whereField("email", isEqualTo: email).getDocuments { [weak self] (querySnapshot, error) in
+//            guard let snapshot = querySnapshot, let document = snapshot.documents.first else {
+//                print("Error fetching person: \(String(describing: error))")
+//                return
+//            }
+//            
+//            do {
+//                if let personData = document.data(), let person = try? document.data(as: Person.self) {
+//                    self?.currentPerson = person
+//                } else {
+//                    print("Failed to decode person data.")
+//                }
+//            } catch {
+//                print("Error decoding person: \(error.localizedDescription)")
+//            }
+//        }
+//    }
+//    func loginUser(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) async {
+//        authController.signIn(withEmail: email, password: password, completion: completion)
+//        let ref = personsRef?.document(currentUser?.uid ?? "")
+//        do {
+//            let person = try await ref?.getDocument(as: Person.self)
+//            currentPerson = person!
+//        } catch {
+//            print("Error decoding person: \(error)")
+//        }
+//    
+//    }
 
     func registerUser(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
         authController.createUser(withEmail: email, password: password, completion: completion)
     }
+    
 
 }

@@ -53,6 +53,16 @@ class loginViewController: UIViewController {
                 strongSelf.showAlert(message: "Failed to sign in: \(error.localizedDescription)")
             } else {
                 // Sign-in successful
+                
+                // TODO: firgure out how to set currentPerson in firebaseController
+                let id = Auth.auth().currentUser?.uid ?? ""
+                
+                Task{
+                    let _ = await strongSelf.databaseController?.setCurrentPerson(id: id)
+                }
+                //strongSelf.showAlert(message: "\(strongSelf.databaseController?.currentPerson.lName ?? "cant find")")
+                
+                // segue to the home page
                 if strongSelf.userType == UserType.nanny {
                     strongSelf.performSegue(withIdentifier: "segueNannyHome", sender: strongSelf.userType)
                 } else {

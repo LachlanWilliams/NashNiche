@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class profileViewController: UIViewController {
 
@@ -20,10 +21,23 @@ class profileViewController: UIViewController {
     
     @IBOutlet weak var jobTable: UITableView!
     
+    weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
+        
+        _ = Auth.auth().currentUser?.uid
+        
+        nameLabel.text = databaseController?.currentPerson.fName
+        
+        if let isNanny = databaseController?.currentPerson.isNanny {
+                usertypeLabel.text = isNanny ? "Nanny" : "Parent"
+        } else {
+            // Handle the case where isNanny is nil
+        }
         // Do any additional setup after loading the view.
     }
     
