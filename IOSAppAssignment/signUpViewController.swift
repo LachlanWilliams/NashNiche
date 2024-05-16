@@ -86,8 +86,9 @@ class signUpViewController: UIViewController {
                 
                 // Set person as currentPerson in the database
                 Task{
-                    let _ = await self.databaseController?.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "");
+                    let _ = await self.databaseController?.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "")
                 }
+               //let _ = async self.databaseController?.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "");
 
                 let userInfo = "First Name: \(firstName)\nLast Name: \(lastName)\nEmail: \(email)"
                 let alert = UIAlertController(title: "Signup Successful", message: userInfo, preferredStyle: .alert)

@@ -78,6 +78,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
             print("Failed to serialize job")
         }
         
+        let _ = addJobtoPerson(job: job, person: currentPerson)
+        
         return job
     }
     
@@ -97,7 +99,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         person.id = uid
         do{
             // here we are setting the new Person doc to have the same ID as the User
-            if let personRef = try personsRef?.document(uid).setData(from: person){
+            if let _ = try personsRef?.document(uid).setData(from: person){
                 
             }
         } catch {
@@ -131,15 +133,17 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
-    // TODO: THIS HASN'T BEEN TESTED
     func setCurrentPerson(id: String) async {
         //let ref = personsRef?.document(id)
-        do {
-            let person = try await personsRef?.document(id).getDocument(as: Person.self)
-            print("This is the currentPerons ID: \(person?.email ?? "no email")")
-            currentPerson = person!
-        } catch {
-            print("Error decoding person: \(error)")
+    
+        Task{
+            do {
+                let person = try await personsRef?.document(id).getDocument(as: Person.self)
+                print("This is the currentPerons ID: \(person?.email ?? "no email")")
+                currentPerson = person!
+            } catch {
+                print("Error decoding person: \(error)")
+            }
         }
     }
     

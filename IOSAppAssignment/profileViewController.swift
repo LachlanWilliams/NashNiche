@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class profileViewController: UIViewController {
+class profileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DatabaseListener {
 
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,8 +21,11 @@ class profileViewController: UIViewController {
     
     @IBOutlet weak var jobTable: UITableView!
     
-    weak var databaseController: DatabaseProtocol?
+    var allJobs: [Job] = []
     
+    var listenerType = ListenerType.jobs
+    weak var databaseController: DatabaseProtocol?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,8 +42,65 @@ class profileViewController: UIViewController {
             // Handle the case where isNanny is nil
         }
         // Do any additional setup after loading the view.
+        
+        jobTable.dataSource = self
+                jobTable.delegate = self
+                
+                // Register custom cell if needed
+                // jobTable.register(UINib(nibName: "CustomJobCell", bundle: nil), forCellReuseIdentifier: "CustomJobCell")
+                
+                // Reload table data
+        jobTable.reloadData()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+    
+    func onParentJobChange(change: DatabaseChange, parentJobs: [Job]) {
+        //nothing
+    }
+    
+    func onAllJobsChange(change: DatabaseChange, jobs: [Job]) {
+        allJobs = jobs
+    }
+    
+    func onPersonChange(change: DatabaseChange, personJobs: [Job]) {
+        
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the number of jobs associated with the current person
+        return databaseController?.currentPerson.jobs.count ?? 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath)
+        
+        // Configure the cell...
+        if let job = databaseController?.currentPerson.jobs[indexPath.row] {
+            // Populate cell with job information
+            cell.textLabel?.text = job.title
+            // Set other properties as needed
+        } else {
+            
+            cell.textLabel?.text = "Not working"
+            
+        }
+
+        return cell
+    }
 
     /*
     // MARK: - Navigation

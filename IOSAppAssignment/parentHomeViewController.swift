@@ -99,7 +99,9 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
         
         confirmAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
             // Add job to the database
-            let _ = self.databaseController?.addJob(title: title, location: location, dateTime: dateTime.description, duration: String(format: "%.2f", durationInHours), desc: desc)
+            let job = self.databaseController?.addJob(title: title, location: location, dateTime: dateTime.description, duration: String(format: "%.2f", durationInHours), desc: desc)
+            
+            self.performSegue(withIdentifier: "postJobSegue", sender: job)
             
             // Clear text fields
             self.titleTextField.text = ""
@@ -164,5 +166,14 @@ class parentHomeViewController: UIViewController, MKMapViewDelegate, CLLocationM
         // Pass the selected object to the new view controller.
     }
     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "postJobSegue" {
+            if let destinationVC = segue.destination as? ParentPreviewJobViewController {
+                if let job = sender as? Job {
+                    destinationVC.job = job
+                }
+            }
+        }
+    }
 
 }

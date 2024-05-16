@@ -20,6 +20,8 @@ class loginViewController: UIViewController {
     
     @IBOutlet weak var loginLabel: UILabel!
     
+    var indicator = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,21 +55,26 @@ class loginViewController: UIViewController {
                 strongSelf.showAlert(message: "Failed to sign in: \(error.localizedDescription)")
             } else {
                 // Sign-in successful
-                
-                // TODO: firgure out how to set currentPerson in firebaseController
-                let id = Auth.auth().currentUser?.uid ?? ""
-                
-                Task{
-                    let _ = await strongSelf.databaseController?.setCurrentPerson(id: id)
-                }
-                //strongSelf.showAlert(message: "\(strongSelf.databaseController?.currentPerson.lName ?? "cant find")")
-                
                 // segue to the home page
-                if strongSelf.userType == UserType.nanny {
-                    strongSelf.performSegue(withIdentifier: "segueNannyHome", sender: strongSelf.userType)
-                } else {
-                    strongSelf.performSegue(withIdentifier: "segueParentHome", sender: strongSelf.userType)
+                let userInfo = "Email: \(strongSelf.databaseController?.currentPerson.email ?? "no email")"
+                // TODO: firgure out how to set currentPerson in firebaseController
+                //let id = Auth.auth().currentUser?.uid ?? ""
+//                strongSelf.showAlert(message: "finished task: \(Auth.auth().currentUser?.uid ?? "")")
+                Task{
+                    let _ = await strongSelf.databaseController?.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "");
                 }
+
+                //strongSelf.showAlert(message: "\(strongSelf.databaseController?.currentPerson.lName ?? "cant find")")
+                let alert = UIAlertController(title: "Signup Successful", message: userInfo, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    if strongSelf.userType == UserType.nanny {
+                        strongSelf.performSegue(withIdentifier: "segueNannyHome", sender: strongSelf.userType)
+                    } else {
+                        strongSelf.performSegue(withIdentifier: "segueParentHome", sender: strongSelf.userType)
+                    }
+                }))
+                strongSelf.present(alert, animated: true, completion: nil)
+
             }
         }
     }
