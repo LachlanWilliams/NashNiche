@@ -119,9 +119,10 @@ class FirebaseController: NSObject, DatabaseProtocol {
         guard let jobID = job.id, let personID = person.id else{
             return false
         }
-        if let newJobRef = jobsRef?.document(jobID) {
-            personsRef?.document(personID).updateData( ["jobs" : FieldValue.arrayUnion([newJobRef])] )
-        }
+        personsRef?.document(personID).updateData( ["jobs" : FieldValue.arrayUnion([jobID])] )
+//        if let newJobRef = jobsRef?.document(jobID) {
+//            personsRef?.document(personID).updateData( ["jobs" : FieldValue.arrayUnion([newJobRef])] )
+//        }
         return true
     }
     
@@ -135,7 +136,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     
     func setCurrentPerson(id: String) async {
         //let ref = personsRef?.document(id)
-    
+        print("setCurrentPeron id: " + id )
         Task{
             do {
                 let person = try await personsRef?.document(id).getDocument(as: Person.self)
@@ -222,7 +223,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         defaultPerson.email = snapshot.data()["email"] as? String
         defaultPerson.id = snapshot.documentID
         
-        if let jobReferences = snapshot.data()["job"] as? [DocumentReference] {
+        if let jobReferences = snapshot.data()["jobs"] as? [DocumentReference] {
             for reference in jobReferences {
                 if let job = getJobByID(reference.documentID) {
                     defaultPerson.jobs.append(job)

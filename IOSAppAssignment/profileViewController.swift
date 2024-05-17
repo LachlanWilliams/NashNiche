@@ -54,6 +54,18 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
+    @IBAction func buttonPress(_ sender: Any) {
+        //self.databaseController?.currentPerson.email
+        showAlert(message: self.databaseController?.currentPerson.email ?? "no current Person")
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
