@@ -54,11 +54,6 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
-    @IBAction func buttonPress(_ sender: Any) {
-        //self.databaseController?.currentPerson.email
-        showAlert(message: self.databaseController?.currentPerson.email ?? "no current Person")
-    }
-    
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -100,8 +95,9 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath)
         
+        let jobs = databaseController?.getCurrentPersonJobs()
         // Configure the cell...
-        if let job = databaseController?.currentPerson.jobs[indexPath.row] {
+        if let job = databaseController?.currentPersonJobs[indexPath.row] {
             // Populate cell with job information
             cell.textLabel?.text = job.title
             // Set other properties as needed

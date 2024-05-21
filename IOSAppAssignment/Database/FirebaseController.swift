@@ -15,6 +15,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     let DEFAULT_PERSON_EMAIL = "DefaultPerson@email"
     var listeners = MulticastDelegate<DatabaseListener>()
     var jobList: [Job]
+    var currentPersonJobs: [Job]
     var defaultPerson: Person
     var currentPerson: Person
     
@@ -29,6 +30,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         authController = Auth.auth()
         database = Firestore.firestore()
         jobList = [Job]()
+        currentPersonJobs = [Job]()
         defaultPerson = Person()
         currentPerson = Person()
         super.init()
@@ -54,7 +56,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
         // TODO: get the listener 
         if listener.listenerType == .person || listener.listenerType == .all {
-            listener.onPersonChange(change: .update, personJobs: defaultPerson.jobs)
+            listener.onPersonChange(change: .update, personJobs: currentPersonJobs)
         }
     }
     
@@ -127,7 +129,10 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     func removeJobfromPerson(job: Job, person: Person) {
-        if person.jobs.contains(job), let personID = person.id, let jobID = job.id {
+        guard let jobID = job.id, let _ = person.id else{
+            return
+        }
+        if person.jobs.contains(jobID), let personID = person.id, let jobID = job.id {
             if let removedJobRef = jobsRef?.document(jobID) {
                 personsRef?.document(personID).updateData(["jobs": FieldValue.arrayRemove([removedJobRef])])
             }
@@ -146,6 +151,26 @@ class FirebaseController: NSObject, DatabaseProtocol {
                 print("Error decoding person: \(error)")
             }
         }
+        let defaultJob = Job()
+        print(jobList)
+        print(currentPerson.jobs)
+        for jobID in currentPerson.jobs{
+            
+            currentPersonJobs.append(getJobByID(jobID) ?? defaultJob)
+        }
+        print(currentPersonJobs)
+        return
+    }
+    
+    func getCurrentPersonJobs() -> [Job]{
+        let defaultJob = Job()
+        for jobID in currentPerson.jobs{
+            
+            currentPersonJobs.append(getJobByID(jobID) ?? defaultJob)
+        }
+        print(currentPersonJobs)
+        return currentPersonJobs
+        
     }
     
     // FIREBASE SPECIFIC FUNCTIONS BELOW
@@ -225,15 +250,17 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
         if let jobReferences = snapshot.data()["jobs"] as? [DocumentReference] {
             for reference in jobReferences {
+                
                 if let job = getJobByID(reference.documentID) {
-                    defaultPerson.jobs.append(job)
+                    defaultPerson.jobs.append(reference.documentID)
                 }
+                
             }
         }
         
         listeners.invoke { (listener) in
             if listener.listenerType == .person || listener.listenerType == .all {
-                listener.onPersonChange(change: .update, personJobs:  defaultPerson.jobs)
+                listener.onPersonChange(change: .update, personJobs:  currentPersonJobs)
             }
         }
         

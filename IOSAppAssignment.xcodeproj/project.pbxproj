@@ -32,6 +32,7 @@
 		1E730E052BC6121B0004EADE /* preSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730E042BC6121B0004EADE /* preSignUpViewController.swift */; };
 		1E730E072BC612430004EADE /* signUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730E062BC612430004EADE /* signUpViewController.swift */; };
 		1E7517E62BE0659700E43483 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7517E52BE0659700E43483 /* Person.swift */; };
+		1E76C87D2BFB1BFD00E24A7D /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1E76C87C2BFB1BFD00E24A7D /* FirebaseMessaging */; };
 		1E912C6F2BE083B2002F7AED /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1E912C6E2BE083B2002F7AED /* FirebaseAuth */; };
 		1E912C712BE083B2002F7AED /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1E912C702BE083B2002F7AED /* FirebaseFirestore */; };
 		1E912C732BE083B2002F7AED /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E912C722BE083B2002F7AED /* FirebaseFirestoreSwift */; };
@@ -95,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E76C87D2BFB1BFD00E24A7D /* FirebaseMessaging in Frameworks */,
 				1E912C6F2BE083B2002F7AED /* FirebaseAuth in Frameworks */,
 				1E912C712BE083B2002F7AED /* FirebaseFirestore in Frameworks */,
 				1E912C732BE083B2002F7AED /* FirebaseFirestoreSwift in Frameworks */,
@@ -223,6 +225,7 @@
 				1E912C6E2BE083B2002F7AED /* FirebaseAuth */,
 				1E912C702BE083B2002F7AED /* FirebaseFirestore */,
 				1E912C722BE083B2002F7AED /* FirebaseFirestoreSwift */,
+				1E76C87C2BFB1BFD00E24A7D /* FirebaseMessaging */,
 			);
 			productName = IOSAppAssignment;
 			productReference = 1E730DD12BC60E700004EADE /* IOSAppAssignment.app */;
@@ -722,6 +725,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1E76C87C2BFB1BFD00E24A7D /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E912C6D2BE083B2002F7AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		1E912C6E2BE083B2002F7AED /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1E912C6D2BE083B2002F7AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

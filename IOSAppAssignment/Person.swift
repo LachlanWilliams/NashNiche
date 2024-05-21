@@ -15,6 +15,6 @@ class Person: NSObject, Codable {
     var email: String?
     var uid: String?
     var isNanny: Bool?
-    var jobs: [Job] = []
+    var jobs: [String] = []
 
 }
