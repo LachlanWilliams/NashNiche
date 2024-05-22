@@ -37,10 +37,13 @@ protocol DatabaseProtocol: AnyObject {
     var defaultPerson: Person {get}
     var currentPerson: Person {get}
     var currentPersonJobs: [(Job)] {get}
+    var corePerson: CorePerson {get}
     func addPerson(fName: String, lName: String, email: String, isNanny: Bool, uid: String) -> Person
     func deletePerson(person: Person)
     func addJobtoPerson(job: Job, person: Person) -> Bool
     func removeJobfromPerson(job: Job, person: Person)
     func setCurrentPerson(id: String) async
     func getCurrentPersonJobs() -> [Job]
+    func fetchCorePersons() -> [CorePerson]
+    func setCorePerson(email: String, password: String, uid: String, isNanny: Bool)
 }

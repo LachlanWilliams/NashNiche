@@ -147,25 +147,26 @@
 //    }
 //
 //
-//    func createDefaultHeroes() {
-//    let _ = addSuperhero(name: "Bruce Wayne", abilities: "Money", universe:
-//    .dc)
-//    let _ = addSuperhero(name: "Superman", abilities: "Super Powered
-//    Alien", universe: .dc)
-//    let _ = addSuperhero(name: "Wonder Woman", abilities: "Goddess",
-//    universe: .dc)
-//    let _ = addSuperhero(name: "The Flash", abilities: "Speed", universe:
-//    .dc)
-//    let _ = addSuperhero(name: "Green Lantern", abilities: "Power Ring",
-//    universe: .dc)
-//    let _ = addSuperhero(name: "Cyborg", abilities: "Robot Beep Beep",
-//    universe: .dc)
-//    let _ = addSuperhero(name: "Aquaman", abilities: "Atlantian", universe:
-//    .dc)
-//    let _ = addSuperhero(name: "Captain Marvel", abilities: "Superhuman
-//    Strength", universe: .marvel)
-//    let _ = addSuperhero(name: "Spider-Man", abilities: "Spider Sense",
-//    universe: .marvel)
-//    cleanup()
-//    }
+////    func createDefaultHeroes() {
+////    let _ = addSuperhero(name: "Bruce Wayne", abilities: "Money", universe:
+////    .dc)
+////    let _ = addSuperhero(name: "Superman", abilities: "Super Powered
+////    Alien", universe: .dc)
+////    let _ = addSuperhero(name: "Wonder Woman", abilities: "Goddess",
+////    universe: .dc)
+////    let _ = addSuperhero(name: "The Flash", abilities: "Speed", universe:
+////    .dc)
+////    let _ = addSuperhero(name: "Green Lantern", abilities: "Power Ring",
+////    universe: .dc)
+////    let _ = addSuperhero(name: "Cyborg", abilities: "Robot Beep Beep",
+////    universe: .dc)
+////    let _ = addSuperhero(name: "Aquaman", abilities: "Atlantian", universe:
+////    .dc)
+////    let _ = addSuperhero(name: "Captain Marvel", abilities: "Superhuman
+////    Strength", universe: .marvel)
+////    let _ = addSuperhero(name: "Spider-Man", abilities: "Spider Sense",
+////    universe: .marvel)
+////    cleanup()
+////    }
 //}
+

@@ -16,9 +16,26 @@ class preSignUpViewController: UIViewController {
 
     var userType: UserType?
     
+    weak var databaseController: DatabaseProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
+        
+        if databaseController?.fetchCorePersons().count != 0 {
+            print("This is corePerson : \(databaseController!.corePerson)")
+//            if ((databaseController?.corePerson.inNanny) != nil) {
+//                if databaseController!.corePerson.inNanny {
+//                    self.performSegue(withIdentifier: "skipNannySignInSegue", sender: self.userType)
+//                }else{
+//                    self.performSegue(withIdentifier: "skipParentSignInSegue", sender: self.userType)
+//                }
+//            }
+        }
 
+        
         // Do any additional setup after loading the view.
     }
     
@@ -31,6 +48,8 @@ class preSignUpViewController: UIViewController {
             if let signUpVC = segue.destination as? signUpViewController {
                 signUpVC.userType = UserType.nanny
             }
+        } else if segue.identifier == "skipNannySignInSegue" {
+            
         }
     }
     

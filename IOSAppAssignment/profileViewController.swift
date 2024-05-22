@@ -95,7 +95,7 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "jobCell", for: indexPath)
         
-        let jobs = databaseController?.getCurrentPersonJobs()
+        _ = databaseController?.getCurrentPersonJobs()
         // Configure the cell...
         if let job = databaseController?.currentPersonJobs[indexPath.row] {
             // Populate cell with job information

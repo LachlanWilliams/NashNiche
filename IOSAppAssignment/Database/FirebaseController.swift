@@ -9,15 +9,19 @@
 import UIKit
 import Firebase
 import FirebaseFirestoreSwift
+import CoreData
 
 class FirebaseController: NSObject, DatabaseProtocol {
         
     let DEFAULT_PERSON_EMAIL = "DefaultPerson@email"
     var listeners = MulticastDelegate<DatabaseListener>()
+    var persistentContainer: NSPersistentContainer
+    var allHeroesFetchedResultsController: NSFetchedResultsController<CorePerson>?
     var jobList: [Job]
     var currentPersonJobs: [Job]
     var defaultPerson: Person
     var currentPerson: Person
+    var corePerson: CorePerson
     
     var authController: Auth
     var database: Firestore
@@ -26,28 +30,44 @@ class FirebaseController: NSObject, DatabaseProtocol {
     var currentUser: FirebaseAuth.User?
 
     override init() {
-        FirebaseApp.configure()
-        authController = Auth.auth()
-        database = Firestore.firestore()
         jobList = [Job]()
         currentPersonJobs = [Job]()
         defaultPerson = Person()
         currentPerson = Person()
+        corePerson = CorePerson()
+        
+        FirebaseApp.configure()
+        authController = Auth.auth()
+        database = Firestore.firestore()
+        
+        
+        persistentContainer = NSPersistentContainer(name: "NashNicheDataModel")
+        persistentContainer.loadPersistentStores() { (description, error ) in
+            if let error = error {
+                fatalError("Failed to load Core Data Stack with error: \(error)")
+            }
+        }
+        
+        
         super.init()
         
+        let _ = fetchCorePersons()
+        
         Task {
-            // now there won't be a new Anonymous user everytime the app starts up
-//            do {
-//                let authDataResult = try await authController.signInAnonymously()
-//                currentUser = authDataResult.user
-//            } catch {
-//                fatalError("Firebase Authentication Failed with Error \(String(describing: error))")
-//            }
             self.setupJobListener()
         }
     }
     
-    func cleanup() {}
+    func cleanup() {
+        print("THIS IS CLEAN UP")
+        if persistentContainer.viewContext.hasChanges {
+            do {
+                try persistentContainer.viewContext.save()
+            } catch {
+                fatalError("Failed to save changes to Core Data with error: \(error)")
+            }
+        }
+    }
     
     func addListener(listener: any DatabaseListener) {
         listeners.addDelegate(listener)
@@ -122,9 +142,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
             return false
         }
         personsRef?.document(personID).updateData( ["jobs" : FieldValue.arrayUnion([jobID])] )
-//        if let newJobRef = jobsRef?.document(jobID) {
-//            personsRef?.document(personID).updateData( ["jobs" : FieldValue.arrayUnion([newJobRef])] )
-//        }
         return true
     }
     
@@ -141,24 +158,20 @@ class FirebaseController: NSObject, DatabaseProtocol {
     
     func setCurrentPerson(id: String) async {
         //let ref = personsRef?.document(id)
-        print("setCurrentPeron id: " + id )
+        
         Task{
             do {
                 let person = try await personsRef?.document(id).getDocument(as: Person.self)
-                print("This is the currentPerons ID: \(person?.email ?? "no email")")
                 currentPerson = person!
             } catch {
                 print("Error decoding person: \(error)")
             }
         }
         let defaultJob = Job()
-        print(jobList)
-        print(currentPerson.jobs)
         for jobID in currentPerson.jobs{
             
             currentPersonJobs.append(getJobByID(jobID) ?? defaultJob)
         }
-        print(currentPersonJobs)
         return
     }
     
@@ -168,7 +181,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
             
             currentPersonJobs.append(getJobByID(jobID) ?? defaultJob)
         }
-        print(currentPersonJobs)
         return currentPersonJobs
         
     }
@@ -266,39 +278,62 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
-//    func setCurrentPerson(email: String){
-//        personsRef?.whereField("email", isEqualTo: email).getDocuments { [weak self] (querySnapshot, error) in
-//            guard let snapshot = querySnapshot, let document = snapshot.documents.first else {
-//                print("Error fetching person: \(String(describing: error))")
-//                return
-//            }
-//            
-//            do {
-//                if let personData = document.data(), let person = try? document.data(as: Person.self) {
-//                    self?.currentPerson = person
-//                } else {
-//                    print("Failed to decode person data.")
-//                }
-//            } catch {
-//                print("Error decoding person: \(error.localizedDescription)")
-//            }
+    func deleteSuperhero(corePerson: CorePerson) {
+        persistentContainer.viewContext.delete(corePerson)
+        cleanup()
+    }
+
+    func fetchCorePersons() -> [CorePerson] {
+        var corePersons = [CorePerson]()
+        let request: NSFetchRequest<CorePerson> = CorePerson.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        do {
+            try corePersons = persistentContainer.viewContext.fetch(request)
+            print("This is corePersons: \(corePersons)")
+        } catch {
+            print("Fetch Request failed with error: \(error)")
+        }
+//        for coreerson in corePersons {
+//            deleteSuperhero(corePerson: coreerson)
 //        }
-//    }
-//    func loginUser(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) async {
-//        authController.signIn(withEmail: email, password: password, completion: completion)
-//        let ref = personsRef?.document(currentUser?.uid ?? "")
-//        do {
-//            let person = try await ref?.getDocument(as: Person.self)
-//            currentPerson = person!
-//        } catch {
-//            print("Error decoding person: \(error)")
-//        }
-//    
-//    }
+        if corePersons.count != 0 {
+            //setCorePerson(email: corePersons[0].email!, password: corePersons[0].password!, uid: corePersons[0].uid!, isNanny: corePersons[0].inNanny)
+            //deleteSuperhero(corePerson: corePersons[0])
+            let email = corePersons[0].email!
+            let password = corePersons[0].password!
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                //guard let strongSelf = self else { return }
+                if let error = error {
+                    // Handle sign-in failure
+                    print("Failed to sign in: \(error.localizedDescription)")
+                } else {
+
+                    //let uid =  Auth.auth().currentUser?.uid ?? "no UID"
+                    Task{
+                        let _ = await self.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "")
+                    }
+                }
+            }
+            //currentPerson = fetchAllJobs()[0] ?? Person()
+        }else {
+        }
+        return corePersons
+    }
+    
+    func setCorePerson(email: String, password: String, uid: String, isNanny: Bool){
+        
+        print("--------- set person ---------")
+        self.corePerson = NSEntityDescription.insertNewObject(forEntityName: "CorePerson", into: persistentContainer.viewContext) as! CorePerson
+    
+        self.corePerson.email = email
+        self.corePerson.password = password
+        self.corePerson.uid = uid
+        self.corePerson.inNanny = isNanny
+        cleanup()
+    }
+
 
     func registerUser(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
         authController.createUser(withEmail: email, password: password, completion: completion)
     }
-    
-
 }

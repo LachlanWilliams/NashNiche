@@ -33,6 +33,8 @@
 		1E730E072BC612430004EADE /* signUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730E062BC612430004EADE /* signUpViewController.swift */; };
 		1E7517E62BE0659700E43483 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7517E52BE0659700E43483 /* Person.swift */; };
 		1E76C87D2BFB1BFD00E24A7D /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 1E76C87C2BFB1BFD00E24A7D /* FirebaseMessaging */; };
+		1E76C88C2BFC324D00E24A7D /* CorePerson+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E76C88A2BFC324D00E24A7D /* CorePerson+CoreDataClass.swift */; };
+		1E76C88D2BFC324D00E24A7D /* CorePerson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E76C88B2BFC324D00E24A7D /* CorePerson+CoreDataProperties.swift */; };
 		1E912C6F2BE083B2002F7AED /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1E912C6E2BE083B2002F7AED /* FirebaseAuth */; };
 		1E912C712BE083B2002F7AED /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1E912C702BE083B2002F7AED /* FirebaseFirestore */; };
 		1E912C732BE083B2002F7AED /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1E912C722BE083B2002F7AED /* FirebaseFirestoreSwift */; };
@@ -87,6 +89,8 @@
 		1E730E042BC6121B0004EADE /* preSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preSignUpViewController.swift; sourceTree = "<group>"; };
 		1E730E062BC612430004EADE /* signUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpViewController.swift; sourceTree = "<group>"; };
 		1E7517E52BE0659700E43483 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		1E76C88A2BFC324D00E24A7D /* CorePerson+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CorePerson+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1E76C88B2BFC324D00E24A7D /* CorePerson+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CorePerson+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1EBD1F932BC62BCF00548B5E /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentHomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +146,8 @@
 		1E730DC82BC60E700004EADE = {
 			isa = PBXGroup;
 			children = (
+				1E76C88A2BFC324D00E24A7D /* CorePerson+CoreDataClass.swift */,
+				1E76C88B2BFC324D00E24A7D /* CorePerson+CoreDataProperties.swift */,
 				1E730DD32BC60E700004EADE /* IOSAppAssignment */,
 				1E730DEA2BC60E720004EADE /* IOSAppAssignmentTests */,
 				1E730DF42BC60E720004EADE /* IOSAppAssignmentUITests */,
@@ -352,6 +358,8 @@
 				1E6235B62BCF702700376450 /* NashNicheDataModel.xcdatamodeld in Sources */,
 				1E6235C32BCF745100376450 /* DatabaseProtocol.swift in Sources */,
 				1E552CD42BDF7CB20076DA9F /* FirebaseController.swift in Sources */,
+				1E76C88C2BFC324D00E24A7D /* CorePerson+CoreDataClass.swift in Sources */,
+				1E76C88D2BFC324D00E24A7D /* CorePerson+CoreDataProperties.swift in Sources */,
 				1E6235C72BCF82B500376450 /* NannyHomeTableViewController.swift in Sources */,
 				1E1BF7782BE0956E0078FDE4 /* UIViewController+displayMessage.swift in Sources */,
 				1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */,

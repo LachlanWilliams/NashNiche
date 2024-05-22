@@ -73,6 +73,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9cC-RC-6mF"/>
+                    <connections>
+                        <segue destination="OUf-c8-vSv" kind="show" identifier="skipParentSignInSegue" id="SQY-xY-Ls5"/>
+                        <segue destination="vof-EX-wHF" kind="show" identifier="skipNannySignInSegue" id="m8Y-af-vPn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -972,8 +976,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Jf0-q7-i0z"/>
-        <segue reference="fuo-rm-a7J"/>
+        <segue reference="m8Y-af-vPn"/>
+        <segue reference="SQY-xY-Ls5"/>
         <segue reference="S0y-Pw-R0j"/>
         <segue reference="0IL-uu-qed"/>
         <segue reference="s4j-mj-Rvq"/>

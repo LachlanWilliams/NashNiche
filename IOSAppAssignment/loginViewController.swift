@@ -61,6 +61,14 @@ class loginViewController: UIViewController {
                     let _ = await self.databaseController?.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "")
                 }
                 
+                var isNanny = true
+                if self.userType == UserType.parent{
+                    isNanny = false
+                }
+                
+                self.databaseController?.setCorePerson(email: email, password: password, uid: Auth.auth().currentUser?.uid ?? "", isNanny: isNanny)
+                
+                print("login CorePerson: \(self.databaseController?.corePerson ?? CorePerson())")
                 
                 let userInfo = "CurrentPerson: \(Auth.auth().currentUser?.uid ?? "didn't work")"
 
@@ -90,26 +98,3 @@ class loginViewController: UIViewController {
     }
 
 }
-
-
-//                // Sign-in successful
-//// segue to the home page
-//let userInfo = "Email: \(strongSelf.databaseController?.currentPerson.email ?? "no email")"
-//// TODO: firgure out how to set currentPerson in firebaseController
-////let id = Auth.auth().currentUser?.uid ?? ""
-////                strongSelf.showAlert(message: "finished task: \(Auth.auth().currentUser?.uid ?? "")")
-//Task{
-//    let _ = await strongSelf.databaseController?.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "");
-//}
-//
-////strongSelf.showAlert(message: "\(strongSelf.databaseController?.currentPerson.lName ?? "cant find")")
-//let alert = UIAlertController(title: "Signup Successful", message: userInfo, preferredStyle: .alert)
-//alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-//    if strongSelf.userType == UserType.nanny {
-//        strongSelf.performSegue(withIdentifier: "segueNannyHome", sender: strongSelf.userType)
-//    } else {
-//        strongSelf.performSegue(withIdentifier: "segueParentHome", sender: strongSelf.userType)
-//    }
-//}))
-//strongSelf.present(alert, animated: true, completion: nil)
-//

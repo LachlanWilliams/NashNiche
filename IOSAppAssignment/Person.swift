@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestoreSwift
 
-class Person: NSObject, Codable {
+public class Person: NSObject, Codable {
     @DocumentID var id: String?
     var fName: String?
     var lName: String?
