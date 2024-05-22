@@ -88,6 +88,13 @@ class signUpViewController: UIViewController {
                 Task{
                     let _ = await self.databaseController?.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "")
                 }
+                
+                var isNanny = true
+                if self.userType == UserType.parent{
+                    isNanny = false
+                }
+                
+                self.databaseController?.setCorePerson(email: email, password: password, uid: Auth.auth().currentUser?.uid ?? "", isNanny: isNanny)
                //let _ = async self.databaseController?.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "");
 
                 let userInfo = "First Name: \(firstName)\nLast Name: \(lastName)\nEmail: \(email)"
