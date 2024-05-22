@@ -297,7 +297,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
 //            deleteSuperhero(corePerson: coreerson)
 //        }
         if corePersons.count != 0 {
-            //setCorePerson(email: corePersons[0].email!, password: corePersons[0].password!, uid: corePersons[0].uid!, isNanny: corePersons[0].inNanny)
+            setCorePerson(email: corePersons[0].email!, password: corePersons[0].password!, uid: corePersons[0].uid!, isNanny: corePersons[0].inNanny)
             //deleteSuperhero(corePerson: corePersons[0])
             let email = corePersons[0].email!
             let password = corePersons[0].password!

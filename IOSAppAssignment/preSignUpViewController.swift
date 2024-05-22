@@ -26,13 +26,13 @@ class preSignUpViewController: UIViewController {
         
         if databaseController?.fetchCorePersons().count != 0 {
             print("This is corePerson : \(databaseController!.corePerson)")
-//            if ((databaseController?.corePerson.inNanny) != nil) {
-//                if databaseController!.corePerson.inNanny {
-//                    self.performSegue(withIdentifier: "skipNannySignInSegue", sender: self.userType)
-//                }else{
-//                    self.performSegue(withIdentifier: "skipParentSignInSegue", sender: self.userType)
-//                }
-//            }
+            if ((databaseController?.corePerson.inNanny) != nil) {
+                if databaseController!.corePerson.inNanny {
+                    self.performSegue(withIdentifier: "skipNannySignInSegue", sender: self.userType)
+                }else{
+                    self.performSegue(withIdentifier: "skipParentSignInSegue", sender: self.userType)
+                }
+            }
         }
 
         
