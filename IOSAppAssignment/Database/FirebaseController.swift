@@ -74,7 +74,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         if listener.listenerType == .jobs || listener.listenerType == .all {
             listener.onAllJobsChange(change: .update, jobs: jobList)
         }
-        // TODO: get the listener 
+        // TODO: get the listener
         if listener.listenerType == .person || listener.listenerType == .all {
             listener.onPersonChange(change: .update, personJobs: currentPersonJobs)
         }
@@ -293,11 +293,12 @@ class FirebaseController: NSObject, DatabaseProtocol {
         } catch {
             print("Fetch Request failed with error: \(error)")
         }
+        // using this for testing
 //        for coreerson in corePersons {
 //            deleteSuperhero(corePerson: coreerson)
 //        }
         if corePersons.count != 0 {
-            setCorePerson(email: corePersons[0].email!, password: corePersons[0].password!, uid: corePersons[0].uid!, isNanny: corePersons[0].inNanny)
+            self.corePerson = corePersons[0]
             //deleteSuperhero(corePerson: corePersons[0])
             let email = corePersons[0].email!
             let password = corePersons[0].password!

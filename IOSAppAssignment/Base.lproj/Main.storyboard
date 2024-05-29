@@ -227,35 +227,6 @@
             </objects>
             <point key="canvasLocation" x="1026.7175572519084" y="741.54929577464793"/>
         </scene>
-        <!--search-->
-        <scene sceneID="492-KS-P8k">
-            <objects>
-                <tableViewController title="search" id="8Yg-Ce-3Lr" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="pqS-KY-DF6">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileCell" id="Zyr-91-Ptt">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zyr-91-Ptt" id="4cF-Jb-62I">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="8Yg-Ce-3Lr" id="a6l-pq-BbT"/>
-                            <outlet property="delegate" destination="8Yg-Ce-3Lr" id="kdq-h7-bBM"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="hbR-Wf-CAA"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lbR-Ut-oB8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1927" y="742"/>
-        </scene>
         <!--chat-->
         <scene sceneID="U4t-1Z-0lz">
             <objects>
@@ -283,7 +254,67 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56W-Ne-NnA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2866" y="742"/>
+            <point key="canvasLocation" x="3069" y="742"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="Qs6-Nw-Eyw">
+            <objects>
+                <viewController id="XdT-bS-x9f" customClass="searchViewController" customModule="IOSAppAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9cP-kz-3N7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FMt-sg-uhV">
+                                <rect key="frame" x="15" y="720" width="312.33333333333331" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NI8-c8-57Z">
+                                <rect key="frame" x="332.33333333333331" y="720" width="50.666666666666686" height="34"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" image="paperplane.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="sendMessage:" destination="XdT-bS-x9f" eventType="touchUpInside" id="JSf-Cq-vXI"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGT-Fl-mAY">
+                                <rect key="frame" x="0.0" y="103" width="393" height="500"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="DOx-6i-c5O"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="T1W-oc-Yi5"/>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am your nanny assisstant. How can i help you?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhT-au-kzj">
+                                <rect key="frame" x="10" y="103" width="361" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="69u-s6-RQg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="69u-s6-RQg" firstAttribute="trailing" secondItem="NI8-c8-57Z" secondAttribute="trailing" constant="10" id="3Ko-sg-g24"/>
+                            <constraint firstItem="69u-s6-RQg" firstAttribute="bottom" secondItem="NI8-c8-57Z" secondAttribute="bottom" constant="15" id="4aa-Wu-Mr8"/>
+                            <constraint firstItem="RhT-au-kzj" firstAttribute="top" secondItem="69u-s6-RQg" secondAttribute="top" id="5rd-L4-BQH"/>
+                            <constraint firstItem="pGT-Fl-mAY" firstAttribute="top" secondItem="69u-s6-RQg" secondAttribute="top" id="6DV-VP-FTU"/>
+                            <constraint firstItem="RhT-au-kzj" firstAttribute="leading" secondItem="69u-s6-RQg" secondAttribute="leading" constant="10" id="Jd3-h1-9gD"/>
+                            <constraint firstItem="FMt-sg-uhV" firstAttribute="leading" secondItem="69u-s6-RQg" secondAttribute="leading" constant="15" id="MGY-ZX-ifD"/>
+                            <constraint firstItem="pGT-Fl-mAY" firstAttribute="trailing" secondItem="69u-s6-RQg" secondAttribute="trailing" id="Obd-Lp-ob3"/>
+                            <constraint firstItem="pGT-Fl-mAY" firstAttribute="leading" secondItem="69u-s6-RQg" secondAttribute="leading" id="Oer-ra-IuI"/>
+                            <constraint firstItem="NI8-c8-57Z" firstAttribute="leading" secondItem="FMt-sg-uhV" secondAttribute="trailing" constant="5" id="Y3Z-9d-K9f"/>
+                            <constraint firstItem="NI8-c8-57Z" firstAttribute="leading" secondItem="FMt-sg-uhV" secondAttribute="trailing" constant="5" id="b0p-FD-Nsk"/>
+                            <constraint firstItem="69u-s6-RQg" firstAttribute="bottom" secondItem="FMt-sg-uhV" secondAttribute="bottom" constant="15" id="gmX-D2-yGn"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="TKB-VK-KYl"/>
+                    <connections>
+                        <outlet property="responseLabel" destination="RhT-au-kzj" id="w0h-fF-TtR"/>
+                        <outlet property="scrollView" destination="pGT-Fl-mAY" id="pMB-oc-WXI"/>
+                        <outlet property="textFeild" destination="FMt-sg-uhV" id="LrF-lJ-aBV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OE7-cU-22d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1925.9541984732823" y="741.54929577464793"/>
         </scene>
         <!--profile-->
         <scene sceneID="pHF-EZ-lIp">
@@ -768,7 +799,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="EgD-oo-esn" kind="relationship" relationship="viewControllers" id="tvs-g1-DHm"/>
-                        <segue destination="8Yg-Ce-3Lr" kind="relationship" relationship="viewControllers" id="TkT-se-zGH"/>
+                        <segue destination="XdT-bS-x9f" kind="relationship" relationship="viewControllers" id="KNP-G6-Bxa"/>
                         <segue destination="2ip-p2-OBL" kind="relationship" relationship="viewControllers" id="s4j-mj-Rvq"/>
                         <segue destination="pjF-pZ-MAi" kind="relationship" relationship="viewControllers" id="0IL-uu-qed"/>
                     </connections>
@@ -790,7 +821,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="wBe-Ga-fpN" kind="relationship" relationship="viewControllers" id="h9e-vl-wax"/>
-                        <segue destination="8Yg-Ce-3Lr" kind="relationship" relationship="viewControllers" id="MI5-7s-zPE"/>
+                        <segue destination="XdT-bS-x9f" kind="relationship" relationship="viewControllers" id="VCW-gW-alE"/>
                         <segue destination="2ip-p2-OBL" kind="relationship" relationship="viewControllers" id="Hg8-De-FQ8"/>
                         <segue destination="pjF-pZ-MAi" kind="relationship" relationship="viewControllers" id="T0g-mu-ue9"/>
                     </connections>
@@ -979,14 +1010,15 @@
         <segue reference="m8Y-af-vPn"/>
         <segue reference="SQY-xY-Ls5"/>
         <segue reference="S0y-Pw-R0j"/>
-        <segue reference="0IL-uu-qed"/>
-        <segue reference="s4j-mj-Rvq"/>
-        <segue reference="TkT-se-zGH"/>
+        <segue reference="T0g-mu-ue9"/>
+        <segue reference="VCW-gW-alE"/>
+        <segue reference="Hg8-De-FQ8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="119"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
