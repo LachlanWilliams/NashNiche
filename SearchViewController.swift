@@ -15,7 +15,7 @@ class searchViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    let apiKey = "secret_here"
+    let apiKey = ""
     
     var previousLabel: UILabel!
     
