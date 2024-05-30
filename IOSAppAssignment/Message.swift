@@ -10,8 +10,6 @@ import FirebaseFirestoreSwift
 
 public class Message: NSObject, Codable {
     @DocumentID var id: String?
-    var parentID: String?
-    var nannyID: String?
     var jobID: String?
-
+    var messages: [String: Bool]?
 }
