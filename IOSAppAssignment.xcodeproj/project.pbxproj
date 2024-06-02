@@ -150,7 +150,6 @@
 		1E730DC82BC60E700004EADE = {
 			isa = PBXGroup;
 			children = (
-				1EC737282C06BEB700E768A4 /* SearchViewController.swift */,
 				1E76C88A2BFC324D00E24A7D /* CorePerson+CoreDataClass.swift */,
 				1E76C88B2BFC324D00E24A7D /* CorePerson+CoreDataProperties.swift */,
 				1E730DD32BC60E700004EADE /* IOSAppAssignment */,
@@ -173,6 +172,7 @@
 		1E730DD32BC60E700004EADE /* IOSAppAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				1EC737282C06BEB700E768A4 /* SearchViewController.swift */,
 				1E730DD42BC60E700004EADE /* AppDelegate.swift */,
 				1E552CCD2BDF726B0076DA9F /* GoogleService-Info.plist */,
 				1E3042C12BC65BB9009989A6 /* TabBarController.swift */,

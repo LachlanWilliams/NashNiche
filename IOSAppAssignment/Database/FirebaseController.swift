@@ -177,10 +177,13 @@ class FirebaseController: NSObject, DatabaseProtocol {
     
     func getCurrentPersonJobs() -> [Job]{
         let defaultJob = Job()
+        var temp: [Job]
+        temp = []
         for jobID in currentPerson.jobs{
-            
-            currentPersonJobs.append(getJobByID(jobID) ?? defaultJob)
+            temp.append(getJobByID(jobID) ?? defaultJob)
         }
+        currentPersonJobs = temp
+        
         return currentPersonJobs
         
     }
