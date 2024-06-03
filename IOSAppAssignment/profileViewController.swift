@@ -86,6 +86,11 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
             jobTable.reloadData()
     }
     
+    @IBAction func signoutButton(_ sender: Any) {
+        
+    }
+    
+    
     @IBAction func addProfilePic(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -97,15 +102,16 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // UIImagePickerControllerDelegate methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let editedImage = info[.editedImage] as? UIImage {
-                profilepic.image = editedImage
-                // Upload the edited image to your database or storage if needed
-            } else if let originalImage = info[.originalImage] as? UIImage {
-                profilepic.image = originalImage
-                // Upload the original image to your database or storage if needed
-            }
-            dismiss(animated: true, completion: nil)
+        if let editedImage = info[.editedImage] as? UIImage {
+            profilepic.image = editedImage
+            // Upload the edited image to your database or storage if needed
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            profilepic.image = originalImage
+            // Upload the original image to your database or storage if needed
         }
+        dismiss(animated: true, completion: nil)
+        print("Image here: \(String(describing: profilepic))")
+    }
         
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -180,16 +186,6 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
             job = pastJobs[indexPath.row]
         }
         cell.textLabel?.text = job.title
-
-//        if let job = databaseController?.currentPersonJobs[indexPath.row] {
-//            // Populate cell with job information
-//            cell.textLabel?.text = job.title
-//            // Set other properties as needed
-//        } else {
-//
-//            cell.textLabel?.text = "Not working"
-//
-//        }
 
         return cell
     }
