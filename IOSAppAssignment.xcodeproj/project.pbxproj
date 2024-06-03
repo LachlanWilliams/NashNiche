@@ -41,7 +41,7 @@
 		1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD1F932BC62BCF00548B5E /* loginViewController.swift */; };
 		1EBD1F962BC62BF200548B5E /* parentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */; };
 		1EC737292C06BEB700E768A4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC737282C06BEB700E768A4 /* SearchViewController.swift */; };
-		1EC7372B2C06DCF300E768A4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC7372A2C06DCF300E768A4 /* Message.swift */; };
+		1EC835B02C0D407200587473 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC835AF2C0D407200587473 /* Chat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +96,7 @@
 		1EBD1F932BC62BCF00548B5E /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentHomeViewController.swift; sourceTree = "<group>"; };
 		1EC737282C06BEB700E768A4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		1EC7372A2C06DCF300E768A4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		1EC835AF2C0D407200587473 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +150,7 @@
 		1E730DC82BC60E700004EADE = {
 			isa = PBXGroup;
 			children = (
+				1EC835AF2C0D407200587473 /* Chat.swift */,
 				1E76C88A2BFC324D00E24A7D /* CorePerson+CoreDataClass.swift */,
 				1E76C88B2BFC324D00E24A7D /* CorePerson+CoreDataProperties.swift */,
 				1E730DD32BC60E700004EADE /* IOSAppAssignment */,
@@ -176,7 +177,6 @@
 				1E730DD42BC60E700004EADE /* AppDelegate.swift */,
 				1E552CCD2BDF726B0076DA9F /* GoogleService-Info.plist */,
 				1E3042C12BC65BB9009989A6 /* TabBarController.swift */,
-				1EC7372A2C06DCF300E768A4 /* Message.swift */,
 				1E7517E52BE0659700E43483 /* Person.swift */,
 				1E552CCF2BDF756F0076DA9F /* Job.swift */,
 				1E1BF7772BE0956E0078FDE4 /* UIViewController+displayMessage.swift */,
@@ -371,6 +371,7 @@
 				1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */,
 				1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */,
 				1E730DD92BC60E700004EADE /* ViewController.swift in Sources */,
+				1EC835B02C0D407200587473 /* Chat.swift in Sources */,
 				1EC737292C06BEB700E768A4 /* SearchViewController.swift in Sources */,
 				1E730DD52BC60E700004EADE /* AppDelegate.swift in Sources */,
 				1E6235AD2BC8E88600376450 /* NannyPreviewJobViewController.swift in Sources */,
@@ -379,7 +380,6 @@
 				1E7517E62BE0659700E43483 /* Person.swift in Sources */,
 				1E6235C52BCF770700376450 /* CoreDataController.swift in Sources */,
 				1E6235C12BCF738700376450 /* MulticastDelegate.swift in Sources */,
-				1EC7372B2C06DCF300E768A4 /* Message.swift in Sources */,
 				1E552CD02BDF756F0076DA9F /* Job.swift in Sources */,
 				1E730DD72BC60E700004EADE /* SceneDelegate.swift in Sources */,
 			);

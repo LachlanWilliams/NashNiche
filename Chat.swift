@@ -1,14 +1,13 @@
 //
-//  Message.swift
+//  Chat.swift
 //  IOSAppAssignment
 //
-//  Created by Lachlan J Williams on 29/5/2024.
+//  Created by Lachlan J Williams on 3/6/2024.
 //
-
 import UIKit
 import FirebaseFirestoreSwift
 
-public class Message: NSObject, Codable {
+public class Chat: NSObject, Codable {
     @DocumentID var id: String?
     var jobID: String?
     var messages: [String: Bool]?
