@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 import CoreData
 
 class FirebaseController: NSObject, DatabaseProtocol {
-        
+
     let DEFAULT_PERSON_EMAIL = "DefaultPerson@email"
     var listeners = MulticastDelegate<DatabaseListener>()
     var persistentContainer: NSPersistentContainer
@@ -334,6 +334,31 @@ class FirebaseController: NSObject, DatabaseProtocol {
         self.corePerson.uid = uid
         self.corePerson.inNanny = isNanny
         cleanup()
+    }
+
+    func signout() {
+        // sign out of firebase
+        do{
+            try Auth.auth().signOut()
+
+        } catch {
+            print("Sign out failed with error: \(error)")
+        }
+        // get rid of persistant storage
+        var corePersons = [CorePerson]()
+        let request: NSFetchRequest<CorePerson> = CorePerson.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        do {
+            try corePersons = persistentContainer.viewContext.fetch(request)
+            print("This is corePersons: \(corePersons)")
+        } catch {
+            print("Fetch Request failed with error: \(error)")
+        }
+        // using this for testing
+        for coreerson in corePersons {
+            deleteSuperhero(corePerson: coreerson)
+        }
+        
     }
 
 

@@ -87,6 +87,8 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func signoutButton(_ sender: Any) {
+        databaseController?.signout()
+        
         
     }
     
@@ -220,6 +222,8 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
                     destinationVC.job = selectedJob
                 }
             }
+        }else if segue.identifier == "signOutSegue" {
+            
         }
     }
 
