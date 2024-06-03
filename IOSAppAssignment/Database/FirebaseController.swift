@@ -92,6 +92,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         job.duration = duration
         job.desc = desc
         job.parentID = currentPerson.uid
+        job.messages = [:]
         
         do {
             if let jobRef = try jobsRef?.addDocument(from: job) {
@@ -267,7 +268,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         if let jobReferences = snapshot.data()["jobs"] as? [DocumentReference] {
             for reference in jobReferences {
                 
-                if let job = getJobByID(reference.documentID) {
+                if let _ = getJobByID(reference.documentID) {
                     defaultPerson.jobs.append(reference.documentID)
                 }
                 
@@ -359,6 +360,14 @@ class FirebaseController: NSObject, DatabaseProtocol {
         for coreerson in corePersons {
             deleteSuperhero(corePerson: coreerson)
         }
+        
+    }
+    
+    func requestjob(job: Job) {
+        //Add job to nanny
+        currentPerson.jobs.append(job.id!)
+        // Auto send message to the chat
+        job.messages!["I am \(currentPerson.fName ?? "") \(currentPerson.lName ?? "")"] = true
         
     }
 
