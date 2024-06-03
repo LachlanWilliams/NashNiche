@@ -91,6 +91,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         job.dateTime = dateTime
         job.duration = duration
         job.desc = desc
+        job.parentID = currentPerson.uid
         
         do {
             if let jobRef = try jobsRef?.addDocument(from: job) {
