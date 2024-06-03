@@ -375,6 +375,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4s5-sG-g7l">
+                                <rect key="frame" x="255" y="135" width="49" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus.app" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="addProfilePic:" destination="pjF-pZ-MAi" eventType="touchUpInside" id="FjD-XW-84T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UaZ-gc-Kgc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -383,9 +391,11 @@
                             <constraint firstItem="cIG-Jg-GhK" firstAttribute="top" secondItem="5sG-yc-snd" secondAttribute="bottom" id="H6g-OT-9sz"/>
                             <constraint firstItem="UaZ-gc-Kgc" firstAttribute="trailing" secondItem="iLQ-4b-cZZ" secondAttribute="trailing" constant="146" id="Jua-7U-FcY"/>
                             <constraint firstItem="UaZ-gc-Kgc" firstAttribute="trailing" secondItem="cIG-Jg-GhK" secondAttribute="trailing" constant="50" id="K8F-HH-EhY"/>
+                            <constraint firstItem="4s5-sG-g7l" firstAttribute="leading" secondItem="iLQ-4b-cZZ" secondAttribute="trailing" constant="8" symbolic="YES" id="REa-rf-ns1"/>
                             <constraint firstItem="UaZ-gc-Kgc" firstAttribute="trailing" secondItem="5sG-yc-snd" secondAttribute="trailing" constant="50" id="T1I-ef-b4h"/>
                             <constraint firstItem="5sG-yc-snd" firstAttribute="top" secondItem="iLQ-4b-cZZ" secondAttribute="bottom" constant="3" id="YN4-zO-P3u"/>
                             <constraint firstItem="iLQ-4b-cZZ" firstAttribute="leading" secondItem="UaZ-gc-Kgc" secondAttribute="leading" constant="147" id="clP-MF-D44"/>
+                            <constraint firstItem="4s5-sG-g7l" firstAttribute="top" secondItem="UaZ-gc-Kgc" secondAttribute="top" constant="32" id="eDD-vK-Isp"/>
                             <constraint firstItem="iLQ-4b-cZZ" firstAttribute="top" secondItem="Cll-OA-egI" secondAttribute="top" constant="70" id="jvf-n3-wOt"/>
                             <constraint firstItem="uqv-v3-EU9" firstAttribute="top" secondItem="cIG-Jg-GhK" secondAttribute="bottom" constant="25" id="liC-jc-Su8"/>
                             <constraint firstItem="UaZ-gc-Kgc" firstAttribute="trailing" secondItem="uqv-v3-EU9" secondAttribute="trailing" constant="40" id="ped-x4-orx"/>
@@ -1021,8 +1031,9 @@
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="paperplane.fill" catalog="system" width="128" height="119"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="plus.app" catalog="system" width="128" height="114"/>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

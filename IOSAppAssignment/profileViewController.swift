@@ -7,8 +7,9 @@
 
 import UIKit
 import FirebaseAuth
+import AVFoundation
 
-class profileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, DatabaseListener {
+class profileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, DatabaseListener, UINavigationControllerDelegate {
 
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -59,12 +60,55 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         jobTable.reloadData()
         
         jobslider.addTarget(self, action: #selector(jobSliderChanged(_:)), for: .valueChanged)
+        
+        var isAuthorized: Bool {
+            get async {
+                let status = AVCaptureDevice.authorizationStatus(for: .video)
+                
+                // Determine if the user previously authorized camera access.
+                var isAuthorized = status == .authorized
+                
+                // If the system hasn't determined the user's authorization status,
+                // explicitly prompt them for approval.
+                print("this is the caerma status: \(status)")
+                if status == .notDetermined {
+                    isAuthorized = await AVCaptureDevice.requestAccess(for: .video)
+                }
+                
+                return isAuthorized
+            }
+        }
 
         
     }
     
     @objc func jobSliderChanged(_ sender: UISegmentedControl) {
             jobTable.reloadData()
+    }
+    
+    @IBAction func addProfilePic(_ sender: Any) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.allowsEditing = true
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    
+    // UIImagePickerControllerDelegate methods
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let editedImage = info[.editedImage] as? UIImage {
+                profilepic.image = editedImage
+                // Upload the edited image to your database or storage if needed
+            } else if let originalImage = info[.originalImage] as? UIImage {
+                profilepic.image = originalImage
+                // Upload the original image to your database or storage if needed
+            }
+            dismiss(animated: true, completion: nil)
+        }
+        
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
