@@ -243,6 +243,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="WEG-sd-HVR" kind="show" id="1Y8-Ad-1Cu"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1027,10 +1030,48 @@
             </objects>
             <point key="canvasLocation" x="2865" y="1550"/>
         </scene>
+        <!--chatLog-->
+        <scene sceneID="dm9-oU-DBe">
+            <objects>
+                <viewController title="chatLog" id="WEG-sd-HVR" customClass="ChatLogtViewController" customModule="IOSAppAssignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1yH-9y-Zrl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdw-r1-zVH">
+                                <rect key="frame" x="15" y="776" width="307.33333333333331" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tM3-Ss-JcQ">
+                                <rect key="frame" x="327.33333333333331" y="776" width="50.666666666666686" height="34"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" image="paperplane.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="sendMessage:" destination="XdT-bS-x9f" eventType="touchUpInside" id="ePx-XC-3uB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8PF-yb-ZhP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8PF-yb-ZhP" firstAttribute="bottom" secondItem="tM3-Ss-JcQ" secondAttribute="bottom" constant="32" id="Dsz-N1-3bx"/>
+                            <constraint firstItem="8PF-yb-ZhP" firstAttribute="trailing" secondItem="tM3-Ss-JcQ" secondAttribute="trailing" constant="15" id="Liw-K2-woy"/>
+                            <constraint firstItem="rdw-r1-zVH" firstAttribute="leading" secondItem="8PF-yb-ZhP" secondAttribute="leading" constant="15" id="PNe-bZ-ARR"/>
+                            <constraint firstItem="8PF-yb-ZhP" firstAttribute="bottom" secondItem="rdw-r1-zVH" secondAttribute="bottom" constant="32" id="WMo-UL-vRW"/>
+                            <constraint firstItem="tM3-Ss-JcQ" firstAttribute="leading" secondItem="rdw-r1-zVH" secondAttribute="trailing" constant="5" id="ibH-mO-pfO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xVr-hC-caR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jIw-Ly-hxp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3810" y="1550"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="m8Y-af-vPn"/>
-        <segue reference="SQY-xY-Ls5"/>
+        <segue reference="Jf0-q7-i0z"/>
+        <segue reference="fuo-rm-a7J"/>
         <segue reference="S0y-Pw-R0j"/>
         <segue reference="T0g-mu-ue9"/>
         <segue reference="VCW-gW-alE"/>
