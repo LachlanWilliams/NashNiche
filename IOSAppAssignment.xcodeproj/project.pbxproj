@@ -42,6 +42,7 @@
 		1EBD1F962BC62BF200548B5E /* parentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */; };
 		1EC737292C06BEB700E768A4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC737282C06BEB700E768A4 /* SearchViewController.swift */; };
 		1EC835B02C0D407200587473 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC835AF2C0D407200587473 /* Chat.swift */; };
+		1EC835B22C0D887600587473 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC835B12C0D887600587473 /* ChatTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentHomeViewController.swift; sourceTree = "<group>"; };
 		1EC737282C06BEB700E768A4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1EC835AF2C0D407200587473 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		1EC835B12C0D887600587473 /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 		1E730DD32BC60E700004EADE /* IOSAppAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				1EC835B12C0D887600587473 /* ChatTableViewController.swift */,
 				1EC737282C06BEB700E768A4 /* SearchViewController.swift */,
 				1E730DD42BC60E700004EADE /* AppDelegate.swift */,
 				1E552CCD2BDF726B0076DA9F /* GoogleService-Info.plist */,
@@ -372,6 +375,7 @@
 				1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */,
 				1E730DD92BC60E700004EADE /* ViewController.swift in Sources */,
 				1EC835B02C0D407200587473 /* Chat.swift in Sources */,
+				1EC835B22C0D887600587473 /* ChatTableViewController.swift in Sources */,
 				1EC737292C06BEB700E768A4 /* SearchViewController.swift in Sources */,
 				1E730DD52BC60E700004EADE /* AppDelegate.swift in Sources */,
 				1E6235AD2BC8E88600376450 /* NannyPreviewJobViewController.swift in Sources */,

@@ -51,12 +51,12 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view.
         
         jobTable.dataSource = self
-                jobTable.delegate = self
-                
-                // Register custom cell if needed
-                // jobTable.register(UINib(nibName: "CustomJobCell", bundle: nil), forCellReuseIdentifier: "CustomJobCell")
-                
-                // Reload table data
+        jobTable.delegate = self
+        
+        // Register custom cell if needed
+        // jobTable.register(UINib(nibName: "CustomJobCell", bundle: nil), forCellReuseIdentifier: "CustomJobCell")
+        
+        // Reload table data
         jobTable.reloadData()
         
         jobslider.addTarget(self, action: #selector(jobSliderChanged(_:)), for: .valueChanged)
@@ -88,8 +88,6 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBAction func signoutButton(_ sender: Any) {
         databaseController?.signout()
-        
-        
     }
     
     
