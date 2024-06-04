@@ -244,7 +244,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="WEG-sd-HVR" kind="show" id="1Y8-Ad-1Cu"/>
+                                    <segue destination="WEG-sd-HVR" kind="show" identifier="chatLogSegue" id="1Y8-Ad-1Cu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1048,9 +1048,17 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" image="paperplane.fill" catalog="system"/>
                                 <connections>
+                                    <action selector="sendMessage:" destination="WEG-sd-HVR" eventType="touchUpInside" id="3Cg-23-MFS"/>
                                     <action selector="sendMessage:" destination="XdT-bS-x9f" eventType="touchUpInside" id="ePx-XC-3uB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This is the initial text for chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6aM-0W-ti2">
+                                <rect key="frame" x="32" y="50" width="218" height="21"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8PF-yb-ZhP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1060,9 +1068,14 @@
                             <constraint firstItem="rdw-r1-zVH" firstAttribute="leading" secondItem="8PF-yb-ZhP" secondAttribute="leading" constant="15" id="PNe-bZ-ARR"/>
                             <constraint firstItem="8PF-yb-ZhP" firstAttribute="bottom" secondItem="rdw-r1-zVH" secondAttribute="bottom" constant="32" id="WMo-UL-vRW"/>
                             <constraint firstItem="tM3-Ss-JcQ" firstAttribute="leading" secondItem="rdw-r1-zVH" secondAttribute="trailing" constant="5" id="ibH-mO-pfO"/>
+                            <constraint firstItem="6aM-0W-ti2" firstAttribute="top" secondItem="8PF-yb-ZhP" secondAttribute="top" constant="50" id="jOi-fA-2dY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xVr-hC-caR"/>
+                    <connections>
+                        <outlet property="initalLabel" destination="6aM-0W-ti2" id="ECb-Bf-2Zd"/>
+                        <outlet property="textBox" destination="rdw-r1-zVH" id="uYF-7s-01l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIw-Ly-hxp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

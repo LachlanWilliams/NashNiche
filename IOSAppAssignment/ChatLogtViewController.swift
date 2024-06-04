@@ -5,14 +5,57 @@
 //  Created by Lachlan J Williams on 4/6/2024.
 //
 
+//TODO: segue the messages
+// - print out the messages on load
+// 
+
 import UIKit
 
 class ChatLogtViewController: UIViewController {
 
+    @IBOutlet weak var textBox: UITextField!
+    
+    @IBOutlet weak var initalLabel: UILabel!
+    
+    var previousLabel: UILabel!
+    
+    var job = Job()
+    
     override func viewDidLoad() {
+        initalLabel.layer.cornerRadius = 10 // Adjust the corner radius as needed
+        initalLabel.clipsToBounds = true
+        previousLabel = initalLabel
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func sendMessage(_ sender: Any) {
+        guard let prompt = textBox.text, !prompt.isEmpty else {
+                    // Handle empty prompt case
+                    return
+                }
+        let newLabel = UILabel()
+        newLabel.text = "\(prompt)"
+        newLabel.numberOfLines = 0
+        newLabel.textColor = .black
+        newLabel.font = UIFont.systemFont(ofSize: 16)
+        newLabel.backgroundColor = UIColor.separator
+        newLabel.layer.cornerRadius = 10 // Adjust the corner radius as needed
+        newLabel.clipsToBounds = true
+        newLabel.textAlignment = .right
+        // Set up constraints for the new label
+        newLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(newLabel)
+
+        // Add constraints
+        NSLayoutConstraint.activate([
+            newLabel.topAnchor.constraint(equalTo: self.previousLabel.bottomAnchor, constant: 16),
+            //newLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            newLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
+        ])
+        previousLabel = newLabel
+        self.textBox.text = ""
     }
     
 
