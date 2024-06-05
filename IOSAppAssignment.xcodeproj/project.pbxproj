@@ -41,7 +41,6 @@
 		1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD1F932BC62BCF00548B5E /* loginViewController.swift */; };
 		1EBD1F962BC62BF200548B5E /* parentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */; };
 		1EC737292C06BEB700E768A4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC737282C06BEB700E768A4 /* SearchViewController.swift */; };
-		1EC835B02C0D407200587473 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC835AF2C0D407200587473 /* Chat.swift */; };
 		1EC835B22C0D887600587473 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC835B12C0D887600587473 /* ChatTableViewController.swift */; };
 		1EC835B42C0EA43700587473 /* ChatLogtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC835B32C0EA43700587473 /* ChatLogtViewController.swift */; };
 /* End PBXBuildFile section */
@@ -98,7 +97,6 @@
 		1EBD1F932BC62BCF00548B5E /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		1EBD1F952BC62BF200548B5E /* parentHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentHomeViewController.swift; sourceTree = "<group>"; };
 		1EC737282C06BEB700E768A4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		1EC835AF2C0D407200587473 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		1EC835B12C0D887600587473 /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		1EC835B32C0EA43700587473 /* ChatLogtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogtViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,7 +133,6 @@
 		1E6235B32BCF700E00376450 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				1EC835AF2C0D407200587473 /* Chat.swift */,
 				1E7517E52BE0659700E43483 /* Person.swift */,
 				1E552CCF2BDF756F0076DA9F /* Job.swift */,
 				1E6235B42BCF702700376450 /* NashNicheDataModel.xcdatamodeld */,
@@ -377,7 +374,6 @@
 				1E3042C22BC65BB9009989A6 /* TabBarController.swift in Sources */,
 				1EBD1F942BC62BCF00548B5E /* loginViewController.swift in Sources */,
 				1E730DD92BC60E700004EADE /* ViewController.swift in Sources */,
-				1EC835B02C0D407200587473 /* Chat.swift in Sources */,
 				1EC835B42C0EA43700587473 /* ChatLogtViewController.swift in Sources */,
 				1EC835B22C0D887600587473 /* ChatTableViewController.swift in Sources */,
 				1EC737292C06BEB700E768A4 /* SearchViewController.swift in Sources */,

@@ -16,7 +16,7 @@ class Job: NSObject, Codable {
     var duration: String?
     var desc: String?
     var parentID: String? 
-    var messages: [String: Bool]?
+    var messages: [String]?
 }
 
 enum CodingKeys: String, CodingKey {
@@ -27,4 +27,10 @@ enum CodingKeys: String, CodingKey {
     case duration
     case desc
     case messages
+}
+
+struct message: Codable {
+    @DocumentID var id: String?
+    var text: String?
+    var isNanny: Bool?
 }

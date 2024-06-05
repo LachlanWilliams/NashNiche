@@ -25,8 +25,14 @@ class NannyPreviewJobViewController: UIViewController {
     
     @IBOutlet weak var theMap: MKMapView!
     
+    var listenerType = ListenerType.jobs
+    weak var databaseController: DatabaseProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
 
         if let job = job {
             titleLabel.text = job.title
@@ -57,6 +63,12 @@ class NannyPreviewJobViewController: UIViewController {
                 self.theMap.addAnnotation(mark)
             }
         }
+    }
+    
+    
+    @IBAction func requestJob(_ sender: Any) {
+        let currentPerson = databaseController?.currentPerson
+        let newMessage = databaseController?.addMessage(text: "I am \(currentPerson?.fName! ?? "") \(currentPerson?.lName! ?? ""), I would like to request this job!", isNanny: true, job: job ?? Job())
     }
     /*
     // MARK: - Navigation

@@ -47,5 +47,5 @@ protocol DatabaseProtocol: AnyObject {
     func fetchCorePersons() -> [CorePerson]
     func setCorePerson(email: String, password: String, uid: String, isNanny: Bool)
     func signout()
-    func requestjob(job: Job)
+    func addMessage(text: String, isNanny: Bool, job: Job) -> message
 }

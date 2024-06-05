@@ -27,6 +27,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     var database: Firestore
     var jobsRef: CollectionReference?
     var personsRef: CollectionReference?
+    var messagesRef: CollectionReference?
     var currentUser: FirebaseAuth.User?
 
     override init() {
@@ -92,7 +93,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         job.duration = duration
         job.desc = desc
         job.parentID = currentPerson.uid
-        job.messages = [:]
+        job.messages = []
         
         do {
             if let jobRef = try jobsRef?.addDocument(from: job) {
@@ -113,6 +114,34 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
+    func addMessage(text: String, isNanny: Bool, job: Job) -> message{
+        var newMessage = message()
+        newMessage.text = text
+        newMessage.isNanny = isNanny
+        let messagesRef = jobsRef?.document(job.id!).collection("messages")
+
+        do {
+            if let messageRef = try messagesRef?.addDocument(from: newMessage) {
+                newMessage.id = messageRef.documentID
+                print("Message added to job")
+            }
+        } catch {
+            print("Failed to add message to job: \(error)")
+        }
+        
+        job.messages?.append(newMessage.id ?? "")
+        jobsRef?.document(job.id!).updateData(["messages": FieldValue.arrayUnion([newMessage.id ?? ""])])
+        
+        print(job.messages ?? ["NOTHING"])
+        return newMessage
+    }
+    
+    func deleteMessage(message: message){
+        if let messageID = message.id {
+            messagesRef?.document(messageID).delete()
+        }
+    }
+    
     func addPerson(fName: String, lName: String, email: String, isNanny: Bool, uid: String ) -> Person {
         let person = Person()
         person.fName = fName
@@ -127,7 +156,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
                 
             }
         } catch {
-            print("Failed to serialize job")
+            print("Failed to serialize Person")
         }
         
         return person
@@ -239,7 +268,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             do {
                 job = try change.document.data(as: Job.self)
             } catch {
-                fatalError("Unable to decode hero: \(error.localizedDescription)")
+                fatalError("Unable to decode Job: \(error.localizedDescription)")
             }
             
             if change.type == .added {
@@ -364,11 +393,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     func requestjob(job: Job) {
-        //Add job to nanny
-        currentPerson.jobs.append(job.id!)
-        // Auto send message to the chat
-        job.messages!["I am \(currentPerson.fName ?? "") \(currentPerson.lName ?? "")"] = true
-        
     }
 
 

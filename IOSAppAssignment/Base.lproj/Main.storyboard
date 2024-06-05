@@ -976,6 +976,9 @@
                                 <rect key="frame" x="50" y="695" width="293" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Request Job"/>
+                                <connections>
+                                    <action selector="requestJob:" destination="SUb-F0-A5S" eventType="touchUpInside" id="vhW-E0-eHQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kaW-XG-W7r"/>
