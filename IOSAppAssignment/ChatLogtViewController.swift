@@ -21,13 +21,25 @@ class ChatLogtViewController: UIViewController {
     
     var job = Job()
     
+    var listenerType = ListenerType.jobs
+    weak var databaseController: DatabaseProtocol?
+    
     override func viewDidLoad() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
+                
         initalLabel.layer.cornerRadius = 10 // Adjust the corner radius as needed
         initalLabel.clipsToBounds = true
         previousLabel = initalLabel
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        Task {
+            print(await getMessages())
+        }
+    }
+    
+    func getMessages() async -> [message]{
+        return await databaseController?.getJobMessages(job: job) ?? []
     }
     
     @IBAction func sendMessage(_ sender: Any) {

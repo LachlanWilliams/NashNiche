@@ -312,6 +312,28 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
+//    func parseMessageSnapshot(job: Job) async -> [message]{
+//        let messagesRef = jobsRef?.document(job.id!).collection("messages")
+//        var messages: [message] = []
+//        
+//
+//        do {
+//            let snapshot = try await messagesRef?.getDocuments()
+//            for documents in snapshot!.documents {
+//                do{
+//                    let newMessage = try documents.data(as: message.self)
+//                    messages.append(newMessage)
+//                } catch {
+//                    print("Failed to serialise message")
+//                }
+//            }
+//        } catch {
+//            print("Failed to get messages")
+//        }
+//        
+//        return messages
+//    }
+//    
     func deleteSuperhero(corePerson: CorePerson) {
         persistentContainer.viewContext.delete(corePerson)
         cleanup()
@@ -392,7 +414,28 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
-    func requestjob(job: Job) {
+    func getJobMessages(job: Job) async -> [message]{
+        let messagesRef = jobsRef?.document(job.id!).collection("messages")
+        var messages: [message] = []
+        
+
+        do {
+            let snapshot = try await messagesRef?.getDocuments()
+            for documents in snapshot!.documents {
+                do{
+                    let newMessage = try documents.data(as: message.self)
+                    messages.append(newMessage)
+                } catch {
+                    print("Failed to serialise message")
+                }
+            }
+        } catch {
+            print("Failed to get messages")
+        }
+        //this might need to be ordered
+        print("These are the messages: \(messages)")
+        
+        return messages
     }
 
 
