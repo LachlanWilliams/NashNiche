@@ -423,7 +423,11 @@ class FirebaseController: NSObject, DatabaseProtocol {
             let snapshot = try await messagesRef?.getDocuments()
             for documents in snapshot!.documents {
                 do{
-                    let newMessage = try documents.data(as: message.self)
+                    let newMessageData = try documents.data(as: message.self)
+                    var newMessage = message()
+                    newMessage.id = newMessageData.id!
+                    newMessage.text = newMessageData.text!
+                    newMessage.isNanny = newMessageData.isNanny!
                     messages.append(newMessage)
                 } catch {
                     print("Failed to serialise message")
@@ -434,8 +438,10 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
         //this might need to be ordered
         print("These are the messages: \(messages)")
-        
-        return messages
+        let sortedMessages = job.messages!.compactMap { id in
+                messages.first(where: { $0.id == id })
+        }
+        return sortedMessages
     }
 
 
