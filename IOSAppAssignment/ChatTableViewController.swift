@@ -36,33 +36,53 @@ class ChatTableViewController: UITableViewController, DatabaseListener {
     func onPersonChange(change: DatabaseChange, personJobs: [Job]) {
         // Do nothing
     }
-    
+    /// Called when there is a change in all jobs data.
+    /// - Parameters:
+    ///   - change: Type of database change.
+    ///   - jobs: Array of all jobs.
     func onAllJobsChange(change: DatabaseChange, jobs: [Job]) {
         allJobs = jobs
     }
     // MARK: - Table view data source
 
+    /// Called before the view appears.
+    /// - Parameter animated: If true, the view is being added to the window using an animation.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
         refreshView()
     }
     
+    /// Called before the view disappears.
+    /// - Parameter animated: If true, the disappearance of the view is being animated.
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
     }
-    
+ 
+    /// Returns the number of sections in the table view.
+    /// - Parameter tableView: The table view requesting this information.
+    /// - Returns: The number of sections in the table view.
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
+    /// Returns the number of rows (jobs) in a given section of the table view.
+    /// - Parameters:
+    ///   - tableView: The table view requesting this information.
+    ///   - section: An index number identifying a section in the table view.
+    /// - Returns: The number of rows in the section.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return filteredJobs.count
     }
 
+    /// Provides a cell object for each row at a specific location in the table view.
+    /// - Parameters:
+    ///   - tableView: The table view requesting the cell.
+    ///   - indexPath: An index path locating a row in the table view.
+    /// - Returns: An object inheriting from UITableViewCell that the table view can use for the specified row.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
 
@@ -72,6 +92,8 @@ class ChatTableViewController: UITableViewController, DatabaseListener {
 
         return cell
     }
+    
+    /// Refreshes the view by reloading the data.
     func refreshView() {
         _ = databaseController?.getCurrentPersonJobs()
         personJobs = databaseController?.currentPersonJobs ?? []
@@ -80,6 +102,9 @@ class ChatTableViewController: UITableViewController, DatabaseListener {
         
     }
     
+    /// Filters jobs that have messages.
+    /// - Parameter personJobs: Array of jobs related to the person.
+    /// - Returns: Array of filtered jobs.
     func filter(personJobs: [Job])-> [Job]{
         var filteredJobs = [Job]()
         filteredJobs = []
@@ -94,7 +119,10 @@ class ChatTableViewController: UITableViewController, DatabaseListener {
     }
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /// Prepares for navigation by passing the selected job to the destination view controller.
+    /// - Parameters:
+    ///   - segue: The segue object containing information about the view controllers involved in the segue.
+    ///   - sender: The object that initiated the segue.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.

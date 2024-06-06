@@ -5,10 +5,6 @@
 //  Created by Lachlan J Williams on 4/6/2024.
 //
 
-//TODO: segue the messages
-// - print out the messages on load
-// 
-
 import UIKit
 
 class ChatLogtViewController: UIViewController {
@@ -41,10 +37,14 @@ class ChatLogtViewController: UIViewController {
         }
     }
     
+    /// Retrieves messages for the job from the database.
+    /// - Returns: An array of messages.
     func getMessages() async -> [message]{
         return await databaseController?.getJobMessages(job: job) ?? []
     }
     
+    /// Sends a message when the send button is pressed.
+    /// - Parameter sender: The object that triggered the action.
     @IBAction func sendMessage(_ sender: Any) {
         guard let prompt = textBox.text, !prompt.isEmpty else {
                     // Handle empty prompt case
@@ -77,6 +77,7 @@ class ChatLogtViewController: UIViewController {
         
     }
     
+    /// Displays messages in the chat log.
     func showMessages() {
             for message in messages {
                 let newLabel = UILabel()
