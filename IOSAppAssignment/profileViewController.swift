@@ -45,9 +45,6 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         } else {
             // Handle the case where isNanny is nil
         }
-        //print("currentPeronsjobs: \(databaseController?.currentPersonJobs ?? [])")
-        //print("currentPeronsjobs: \(databaseController?.currentPersonJobs ?? [])")
-
         // Do any additional setup after loading the view.
         
         jobTable.dataSource = self
@@ -70,7 +67,6 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 // If the system hasn't determined the user's authorization status,
                 // explicitly prompt them for approval.
-                print("this is the caerma status: \(status)")
                 if status == .notDetermined {
                     isAuthorized = await AVCaptureDevice.requestAccess(for: .video)
                 }
@@ -110,7 +106,6 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
             // Upload the original image to your database or storage if needed
         }
         dismiss(animated: true, completion: nil)
-        print("Image here: \(String(describing: profilepic))")
     }
         
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -131,7 +126,6 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     func refreshView() {
         _ = databaseController?.getCurrentPersonJobs()
         personJobs = databaseController?.currentPersonJobs ?? []
-        print("test to see if personJobs: \(personJobs)")
         filterJobs()
         jobTable.reloadData()
         // If there are other UI elements to refresh, update them here
@@ -206,9 +200,6 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
                 currentJobs.append(job)
             }
         }
-        print("person jobs: \(personJobs)")
-        print("Current Jobs: \(currentJobs)")
-        print("Past Jobs: \(pastJobs)")
         jobTable.reloadData()
     }
     
@@ -224,15 +215,5 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
             
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

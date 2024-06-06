@@ -105,7 +105,6 @@ class searchViewController: UIViewController {
                                 //self?.responseLabel.text = content
                                 //self?.view.layoutIfNeeded() // Force layout update
                                 self?.textFeild.text = ""
-                                print(content)
                                 
                                 let newLabelResponse = UILabel()
                                 newLabelResponse.text = content

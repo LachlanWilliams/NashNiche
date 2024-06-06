@@ -18,7 +18,6 @@
 		1E6235B62BCF702700376450 /* NashNicheDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235B42BCF702700376450 /* NashNicheDataModel.xcdatamodeld */; };
 		1E6235C12BCF738700376450 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235C02BCF738700376450 /* MulticastDelegate.swift */; };
 		1E6235C32BCF745100376450 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235C22BCF745100376450 /* DatabaseProtocol.swift */; };
-		1E6235C52BCF770700376450 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235C42BCF770700376450 /* CoreDataController.swift */; };
 		1E6235C72BCF82B500376450 /* NannyHomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6235C62BCF82B500376450 /* NannyHomeTableViewController.swift */; };
 		1E730DD52BC60E700004EADE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD42BC60E700004EADE /* AppDelegate.swift */; };
 		1E730DD72BC60E700004EADE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E730DD62BC60E700004EADE /* SceneDelegate.swift */; };
@@ -74,7 +73,6 @@
 		1E6235B52BCF702700376450 /* NashNicheDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NashNicheDataModel.xcdatamodel; sourceTree = "<group>"; };
 		1E6235C02BCF738700376450 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		1E6235C22BCF745100376450 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
-		1E6235C42BCF770700376450 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		1E6235C62BCF82B500376450 /* NannyHomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NannyHomeTableViewController.swift; sourceTree = "<group>"; };
 		1E730DD12BC60E700004EADE /* IOSAppAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSAppAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E730DD42BC60E700004EADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				1E552CD32BDF7CB20076DA9F /* FirebaseController.swift */,
 				1E6235C02BCF738700376450 /* MulticastDelegate.swift */,
 				1E6235C22BCF745100376450 /* DatabaseProtocol.swift */,
-				1E6235C42BCF770700376450 /* CoreDataController.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -154,8 +151,8 @@
 		1E730DC82BC60E700004EADE = {
 			isa = PBXGroup;
 			children = (
-				1E76C88A2BFC324D00E24A7D /* CorePerson+CoreDataClass.swift */,
 				1E76C88B2BFC324D00E24A7D /* CorePerson+CoreDataProperties.swift */,
+				1E76C88A2BFC324D00E24A7D /* CorePerson+CoreDataClass.swift */,
 				1E730DD32BC60E700004EADE /* IOSAppAssignment */,
 				1E730DEA2BC60E720004EADE /* IOSAppAssignmentTests */,
 				1E730DF42BC60E720004EADE /* IOSAppAssignmentUITests */,
@@ -382,7 +379,6 @@
 				1E6235AB2BC8E4F100376450 /* ParentPreviewJobViewController.swift in Sources */,
 				1E3042C02BC65608009989A6 /* profileViewController.swift in Sources */,
 				1E7517E62BE0659700E43483 /* Person.swift in Sources */,
-				1E6235C52BCF770700376450 /* CoreDataController.swift in Sources */,
 				1E6235C12BCF738700376450 /* MulticastDelegate.swift in Sources */,
 				1E552CD02BDF756F0076DA9F /* Job.swift in Sources */,
 				1E730DD72BC60E700004EADE /* SceneDelegate.swift in Sources */,

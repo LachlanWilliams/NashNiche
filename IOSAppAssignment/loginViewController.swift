@@ -66,9 +66,7 @@ class loginViewController: UIViewController {
                 }
                 
                 self.databaseController?.setCorePerson(email: email, password: password, uid: Auth.auth().currentUser?.uid ?? "", isNanny: isNanny)
-                
-                print("login CorePerson: \(self.databaseController?.corePerson ?? CorePerson())")
-                
+                                
                 let fullName = (self.databaseController?.currentPerson.fName ?? "") + " " + (self.databaseController?.currentPerson.lName ?? "")
                 
                 let userInfo = "CurrentPerson: \(fullName)"
