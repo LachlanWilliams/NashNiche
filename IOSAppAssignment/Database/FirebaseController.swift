@@ -60,7 +60,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     func cleanup() {
-        print("THIS IS CLEAN UP")
         if persistentContainer.viewContext.hasChanges {
             do {
                 try persistentContainer.viewContext.save()
@@ -123,7 +122,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
         do {
             if let messageRef = try messagesRef?.addDocument(from: newMessage) {
                 newMessage.id = messageRef.documentID
-                print("Message added to job")
             }
         } catch {
             print("Failed to add message to job: \(error)")
@@ -132,7 +130,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
         job.messages?.append(newMessage.id ?? "")
         jobsRef?.document(job.id!).updateData(["messages": FieldValue.arrayUnion([newMessage.id ?? ""])])
         
-        print(job.messages ?? ["NOTHING"])
         return newMessage
     }
     
@@ -312,28 +309,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
-//    func parseMessageSnapshot(job: Job) async -> [message]{
-//        let messagesRef = jobsRef?.document(job.id!).collection("messages")
-//        var messages: [message] = []
-//        
-//
-//        do {
-//            let snapshot = try await messagesRef?.getDocuments()
-//            for documents in snapshot!.documents {
-//                do{
-//                    let newMessage = try documents.data(as: message.self)
-//                    messages.append(newMessage)
-//                } catch {
-//                    print("Failed to serialise message")
-//                }
-//            }
-//        } catch {
-//            print("Failed to get messages")
-//        }
-//        
-//        return messages
-//    }
-//    
     func deleteSuperhero(corePerson: CorePerson) {
         persistentContainer.viewContext.delete(corePerson)
         cleanup()
@@ -345,7 +320,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
         request.returnsObjectsAsFaults = false
         do {
             try corePersons = persistentContainer.viewContext.fetch(request)
-            print("This is corePersons: \(corePersons)")
         } catch {
             print("Fetch Request failed with error: \(error)")
         }
@@ -379,7 +353,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
     
     func setCorePerson(email: String, password: String, uid: String, isNanny: Bool){
         
-        print("--------- set person ---------")
         self.corePerson = NSEntityDescription.insertNewObject(forEntityName: "CorePerson", into: persistentContainer.viewContext) as! CorePerson
     
         self.corePerson.email = email
@@ -403,7 +376,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
         request.returnsObjectsAsFaults = false
         do {
             try corePersons = persistentContainer.viewContext.fetch(request)
-            print("This is corePersons: \(corePersons)")
         } catch {
             print("Fetch Request failed with error: \(error)")
         }
@@ -437,7 +409,6 @@ class FirebaseController: NSObject, DatabaseProtocol {
             print("Failed to get messages")
         }
         //this might need to be ordered
-        print("These are the messages: \(messages)")
         let sortedMessages = job.messages!.compactMap { id in
                 messages.first(where: { $0.id == id })
         }

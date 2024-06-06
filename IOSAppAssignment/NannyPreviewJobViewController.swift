@@ -69,6 +69,7 @@ class NannyPreviewJobViewController: UIViewController {
     @IBAction func requestJob(_ sender: Any) {
         let currentPerson = databaseController?.currentPerson
         let newMessage = databaseController?.addMessage(text: "I am \(currentPerson?.fName! ?? "") \(currentPerson?.lName! ?? ""), I would like to request this job!", isNanny: true, job: job ?? Job())
+        let _ = databaseController?.addJobtoPerson(job: self.job ?? Job(), person: currentPerson ?? Person())
     }
     /*
     // MARK: - Navigation
