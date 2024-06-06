@@ -56,7 +56,6 @@ class ChatLogtViewController: UIViewController {
         newLabel.backgroundColor = UIColor.link
         newLabel.textColor = UIColor.white
         newLabel.font = UIFont.systemFont(ofSize: 16)
-        newLabel.backgroundColor = UIColor.separator
         newLabel.layer.cornerRadius = 10 // Adjust the corner radius as needed
         newLabel.clipsToBounds = true
         newLabel.textAlignment = .right

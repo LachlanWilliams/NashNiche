@@ -56,7 +56,6 @@ class loginViewController: UIViewController {
             } else {
                 
                 //let uid =  Auth.auth().currentUser?.uid ?? "no UID"
-                print("where is this ")
                 Task{
                     let _ = await self.databaseController?.setCurrentPerson(id: Auth.auth().currentUser?.uid ?? "")
                 }
@@ -70,7 +69,9 @@ class loginViewController: UIViewController {
                 
                 print("login CorePerson: \(self.databaseController?.corePerson ?? CorePerson())")
                 
-                let userInfo = "CurrentPerson: \(Auth.auth().currentUser?.uid ?? "didn't work")"
+                let fullName = (self.databaseController?.currentPerson.fName ?? "") + " " + (self.databaseController?.currentPerson.lName ?? "")
+                
+                let userInfo = "CurrentPerson: \(fullName)"
 
                 let alert = UIAlertController(title: "Signup Successful", message: userInfo, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
