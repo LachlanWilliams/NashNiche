@@ -78,15 +78,17 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     
+    /// reload the table to display the correct information
     @objc func jobSliderChanged(_ sender: UISegmentedControl) {
             jobTable.reloadData()
     }
     
+    /// Signs the user out taking them to the preSignUp screen
     @IBAction func signoutButton(_ sender: Any) {
         databaseController?.signout()
     }
     
-    
+    /// adds a profile picture to the user
     @IBAction func addProfilePic(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -96,7 +98,7 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
-    // UIImagePickerControllerDelegate methods
+    /// UIImagePickerControllerDelegate methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[.editedImage] as? UIImage {
             profilepic.image = editedImage
@@ -112,6 +114,7 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         dismiss(animated: true, completion: nil)
     }
     
+    /// Loads all the tables information 
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             databaseController?.addListener(listener: self)

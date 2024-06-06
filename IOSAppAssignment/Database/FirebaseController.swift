@@ -59,6 +59,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
+    /// Cleans up and saves any changes to the Core Data context.
     func cleanup() {
         if persistentContainer.viewContext.hasChanges {
             do {
@@ -69,6 +70,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
+    /// Adds a listener to the list of listeners.
+    /// - Parameter listener: The listener to be added.
     func addListener(listener: any DatabaseListener) {
         listeners.addDelegate(listener)
         if listener.listenerType == .jobs || listener.listenerType == .all {
@@ -80,10 +83,20 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
+    /// Removes a listener from the list of listeners.
+    /// - Parameter listener: The listener to be removed.
     func removeListener(listener: any DatabaseListener) {
         listeners.removeDelegate(listener)
     }
     
+    /// Adds a new job to Firestore.
+    /// - Parameters:
+    ///   - title: The title of the job.
+    ///   - location: The location of the job.
+    ///   - dateTime: The date and time of the job.
+    ///   - duration: The duration of the job.
+    ///   - desc: The description of the job.
+    /// - Returns: The newly created job.
     func addJob(title: String, location: String, dateTime: String, duration: String, desc: String) -> Job {
         let job = Job()
         job.title = title
@@ -107,12 +120,20 @@ class FirebaseController: NSObject, DatabaseProtocol {
         return job
     }
     
+    /// Deletes a job from Firestore.
+    /// - Parameter job: The job to be deleted.
     func deleteJob(job: Job) {
         if let jobID = job.id {
             jobsRef?.document(jobID).delete()
         }
     }
     
+    /// Adds a new message to a job in Firestore.
+    /// - Parameters:
+    ///   - text: The text of the message.
+    ///   - isNanny: Whether the message is from a nanny.
+    ///   - job: The job to which the message belongs.
+    /// - Returns: The newly created message.
     func addMessage(text: String, isNanny: Bool, job: Job) -> message{
         var newMessage = message()
         newMessage.text = text
@@ -133,12 +154,22 @@ class FirebaseController: NSObject, DatabaseProtocol {
         return newMessage
     }
     
+    /// Deletes a message from Firestore.
+    /// - Parameter message: The message to be deleted.
     func deleteMessage(message: message){
         if let messageID = message.id {
             messagesRef?.document(messageID).delete()
         }
     }
     
+    /// Adds a new person to Firestore.
+    /// - Parameters:
+    ///   - fName: The first name of the person.
+    ///   - lName: The last name of the person.
+    ///   - email: The email of the person.
+    ///   - isNanny: Whether the person is a nanny.
+    ///   - uid: The unique identifier of the person.
+    /// - Returns: The newly created person.
     func addPerson(fName: String, lName: String, email: String, isNanny: Bool, uid: String ) -> Person {
         let person = Person()
         person.fName = fName
@@ -159,12 +190,19 @@ class FirebaseController: NSObject, DatabaseProtocol {
         return person
     }
     
+    /// Deletes a person from Firestore.
+    /// - Parameter person: The person to be deleted.
     func deletePerson(person: Person) {
         if let personID = person.id {
             personsRef?.document(personID).delete()
         }
     }
     
+    /// Adds a job to a person in Firestore.
+    /// - Parameters:
+    ///   - job: The job to be added.
+    ///   - person: The person to whom the job is to be added.
+    /// - Returns: Whether the job was successfully added to the person.
     func addJobtoPerson(job: Job, person: Person) -> Bool {
         guard let jobID = job.id, let personID = person.id else{
             return false
@@ -173,6 +211,10 @@ class FirebaseController: NSObject, DatabaseProtocol {
         return true
     }
     
+    /// Removes a job from a person in Firestore.
+    /// - Parameters:
+    ///   - job: The job to be removed.
+    ///   - person: The person from whom the job is to be removed.
     func removeJobfromPerson(job: Job, person: Person) {
         guard let jobID = job.id, let _ = person.id else{
             return
@@ -184,6 +226,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
+    /// Sets the current person using their ID.
+    /// - Parameter id: The ID of the person to be set as the current person.
     func setCurrentPerson(id: String) async {
         //let ref = personsRef?.document(id)
         
@@ -203,6 +247,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
         return
     }
     
+    /// Gets the current person's jobs.
+    /// - Returns: A list of jobs belonging to the current person.
     func getCurrentPersonJobs() -> [Job]{
         let defaultJob = Job()
         var temp: [Job]
@@ -218,6 +264,9 @@ class FirebaseController: NSObject, DatabaseProtocol {
     
     // FIREBASE SPECIFIC FUNCTIONS BELOW
     
+    /// Retrieves a job by its ID.
+    /// - Parameter id: The ID of the job.
+    /// - Returns: The job with the specified ID, or nil if not found.
     func getJobByID(_ id: String) -> Job?{
         for job in jobList {
             if job.id == id {
@@ -228,6 +277,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
+    /// Sets up a snapshot listener for job changes in Firestore.
     func setupJobListener(){
         jobsRef = database.collection("job")
         
@@ -245,6 +295,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         }
     }
     
+    /// Sets up a snapshot listener for person changes in Firestore.
     func setupPersonListener(){
         personsRef = database.collection("person")
         
@@ -259,6 +310,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
+    /// Parses job changes from a Firestore snapshot.
+    /// - Parameter snapshot: The Firestore snapshot containing job changes.
     func parseJobsSnapshot(snapshot: QuerySnapshot){
         snapshot.documentChanges.forEach { (change) in
             var job: Job
@@ -286,6 +339,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
+    /// Parses person changes from a Firestore snapshot.
+    /// - Parameter snapshot: The Firestore snapshot containing person data.
     func parsePersonSnapshot(snapshot: QueryDocumentSnapshot){
         defaultPerson = Person()
         defaultPerson.email = snapshot.data()["email"] as? String
@@ -309,11 +364,15 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
+    /// Deletes a CorePerson from Core Data.
+    /// - Parameter corePerson: The CorePerson to be deleted.
     func deleteSuperhero(corePerson: CorePerson) {
         persistentContainer.viewContext.delete(corePerson)
         cleanup()
     }
 
+    /// Fetches all CorePersons from Core Data.
+    /// - Returns: A list of CorePersons.
     func fetchCorePersons() -> [CorePerson] {
         var corePersons = [CorePerson]()
         let request: NSFetchRequest<CorePerson> = CorePerson.fetchRequest()
@@ -351,6 +410,12 @@ class FirebaseController: NSObject, DatabaseProtocol {
         return corePersons
     }
     
+    /// Sets the CorePerson in Core Data.
+    /// - Parameters:
+    ///   - email: The email of the CorePerson.
+    ///   - password: The password of the CorePerson.
+    ///   - uid: The unique identifier of the CorePerson.
+    ///   - isNanny: Whether the CorePerson is a nanny.
     func setCorePerson(email: String, password: String, uid: String, isNanny: Bool){
         
         self.corePerson = NSEntityDescription.insertNewObject(forEntityName: "CorePerson", into: persistentContainer.viewContext) as! CorePerson
@@ -362,6 +427,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         cleanup()
     }
 
+    ///Signs out the current user from Firebase and clears Core Data.
     func signout() {
         // sign out of firebase
         do{
@@ -386,6 +452,9 @@ class FirebaseController: NSObject, DatabaseProtocol {
         
     }
     
+    ///Fetches messages associated with a job from Firestore.
+    ///- Parameter job: The `Job` whose messages will be fetched.
+    ///- Returns: An array of `message` objects.
     func getJobMessages(job: Job) async -> [message]{
         let messagesRef = jobsRef?.document(job.id!).collection("messages")
         var messages: [message] = []
@@ -415,7 +484,11 @@ class FirebaseController: NSObject, DatabaseProtocol {
         return sortedMessages
     }
 
-
+    /// Registers a new user with Firebase Authentication.
+    ///- Parameters:
+    ///   - email: The email of the new user.
+    ///   - password: The password of the new user.
+    ///   - completion: The completion handler to call when the registration is complete.
     func registerUser(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
         authController.createUser(withEmail: email, password: password, completion: completion)
     }

@@ -47,6 +47,8 @@ class NannyPreviewJobViewController: UIViewController {
     }
     
 
+    /// Adds a marker to the map for the given location.
+    /// - Parameter location: The location string to geocode and add a marker for.
     func addMarkerForLocation(_ location: String) {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(location) { [weak self] placemarks, error in
@@ -65,7 +67,9 @@ class NannyPreviewJobViewController: UIViewController {
         }
     }
     
-    
+   
+    /// Action triggered when the nanny requests the job.
+    /// - Parameter sender: The object that triggered the action.
     @IBAction func requestJob(_ sender: Any) {
         let currentPerson = databaseController?.currentPerson
         let newMessage = databaseController?.addMessage(text: "I am \(currentPerson?.fName! ?? "") \(currentPerson?.lName! ?? ""), I would like to request this job!", isNanny: true, job: job ?? Job())

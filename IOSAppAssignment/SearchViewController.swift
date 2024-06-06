@@ -39,7 +39,8 @@ class searchViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
+    /// Sends a message to the OpenAI API and displays the response.
+    /// - Parameter sender: The object that triggered the action.
     @IBAction func sendMessage(_ sender: Any) {
         guard let prompt = textFeild.text, !prompt.isEmpty else {
                     // Handle empty prompt case
